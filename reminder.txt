@@ -1,0 +1,72 @@
+#---------------------------------#
+| Remembering's for clean Install |
+#---------------------------------#
+
+1. ipTables Rule : 
+
+$ sudo iptables -A INPUT -p tcp --dport 8081 -j ACCEPT
+
+/** 
+*  
+* This will set the 8081 port with tcp protocol in the /etc/sysconfig/iptables (fedora)
+* also need to save this using the iptables-service / iptables-persistent
+*
+*/
+
+$ sudo iptables-save > /etc/sysconfig/iptables
+$ sudo service iptables restart
+
+// NOW: It is supposed that your rules are set across reboots 
+// and you can also manually configure this file on /etc/sysconfig/iptables using vim/nano
+
+#---------------------------------------------------------------------------------------------------------------
+#---------------------------------------------------------------------------------------------------------------
+
+2. Network-Manager && Network-Manager-Cli
+
+/**
+* If installing the Vanilla System ("NOT SURE ON OTHER DISTRO'S")
+* but in my case [ "FEDORA-MINIMAL" ] :
+* install these Package to work with the Networks and Wi-Fi
+* 
+*/
+
+$ sudo $package-manager install networkmanager
+$ sudo reboot 
+
+-- After the reboot : you may use the "nmcli" or for ease 
+-- you may install NetworkManager-tui and use "nmtui"
+
+-- for nmcli user :
+
+$ sudo nmcli radio wifi on 
+$ nmcli radio wifi // returns the status (enabled/disabled)
+
+-- list the connection: 
+$ sudo dev wifi list 
+
+-- connect 
+$ sudo dev wifi connect <SSID> password <PASSWORD>
+
+-- list active connection
+$ nmcli connection show --active
+
+-- show-password
+$ sudo dev wifi show-password
+
+#---------------------------------------------------------------------------------------------------------------
+#---------------------------------------------------------------------------------------------------------------
+
+3. Disabling Camera from the system 
+
+$ sudo mdprobe -r uvcvideo 
+--disable the camera driver untill next-reboot
+
+$ sudo mdprobe uvcvideo 
+--enable the module in the kernel into the kernel enabling support for cam
+--but after the blacklisting of the module it can't be done using this way 
+
+
+$ echo "blacklist uvcvideo" | sudo tee -a /etc/modprobe.d/blacklist.conf
+--disabling camera persistently across reboots 
+--can manually undone editing file /etc/modprobe.d/blacklist.conf as root 
