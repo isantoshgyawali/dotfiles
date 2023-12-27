@@ -14,7 +14,10 @@ alias upd='sudo dnf update --refresh && sudo dnf upgrade --refresh'
 alias codx='code && exit'
 alias br='firefox & disown'
 alias gpt='xdg-open https://chat.openai.com & disown && exit'
+
 alias vi='nvim'
+alias svi='sudo nvim'
+
 alias yt='xdg-open https://youtube.com/ & disown && exit'
 alias ytdown='youtube-dl'
 alias tput='trash-put'
@@ -36,7 +39,15 @@ alias pwc='pwd | xsel --clipboard'
 alias open='vi $( find $HOME -type f | fzf --preview "bat --color always {}")'
 alias goto='cd $(find $HOME -type d | fzf); printf "\033c" && pwd'
 
+alias ..='cd ..'
+alias ...='cd ../..'
+
 alias hf='history | fzf'
+
+#-------------------
+#  System Aliases   |
+#-------------------
+alias ps='px aux | fzf'
 
 #-------------
 #  git_quick  |
