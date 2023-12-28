@@ -43,6 +43,10 @@ funPackages=(
 
 
 
+#-----------------------------
+# Validating SUDO Privilleges |
+#-----------------------------
+
 if [[ $EUID -ne 0 ]]; then
     
     sudo -v  
