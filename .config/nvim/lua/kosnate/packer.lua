@@ -13,12 +13,11 @@ return require('packer').startup(function(use)
 	  requires = { {'nvim-lua/plenary.nvim'} }
 }
 
--- Packer
+-- OneDark Pro Theme by: https://github.com/olimorris/
 use "olimorris/onedarkpro.nvim"
-
--- somewhere in your config:
 vim.cmd("colorscheme onedark_dark")
 
+-- Nvim-treesitter
 use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate'})
 
 end)
