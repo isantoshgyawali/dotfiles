@@ -37,7 +37,7 @@ alias pwc='pwd | xsel --clipboard'
 #  dir/files search   |
 #---------------------
 alias open='vi $( find $HOME -type f | fzf --preview "bat --color always {}")'
-alias goto='cd $(find $HOME -type d | fzf); printf "\033c" && pwd'
+alias goto='cd $(find $HOME -type d | fzf) | ll; printf "\033c" && pwd'
 
 alias ..='cd ..'
 alias ...='cd ../..'
@@ -47,7 +47,7 @@ alias hf='history | fzf'
 #-------------------
 #  System Aliases   |
 #-------------------
-alias ps='px aux | fzf'
+alias px='ps aux | fzf'
 
 #-------------
 #  git_quick  |
