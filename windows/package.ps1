@@ -12,30 +12,29 @@ $packagestoremove = @(
 
 )
 
-Write-Host #---------------------------------------------#
-Write-Host |    Installed packages/Services in system    |
-Write-Host #---------------------------------------------#
+$installedPackagesToRemove = $packagestoremove | ForEach-Object { Get-AppxPackage -Name $_ -AllUsers }
 
-$installedPackagesToRemove = Get-Appxpackage -Name $packagestoremove -AllUsers
+if ($installedPackagesToRemove) {
+	Write-Host "#---------------------------------------------#"
+	Write-Host "|    Installed packages/Services in system    |"
+	Write-Host "#---------------------------------------------#"
 
-if($installedPackagesToRemove){
-
-	$installPackagesToRemove | Format-Table Name , PackageFullName --AutoSize
+	$installedPackagesToRemove | Format-Table Name, PackageFullName --AutoSize
 	
-	$confirm = Read-Host "Throw the junk out of windows?(ofc/no)"
+	$confirm = Read-Host "Throw the junk out of windows? (ofc/no)"
 
-	if($confirm -eq "Y" -or $confirm -eq "y" -or $confirm -eq "ofc"){
-		
-		$installedPackagesToRemove | Remove-Appxpackage
-		Write-Host "Junk Clean Successfull!"
+	if ($confirm -eq "Y" -or $confirm -eq "y" -or $confirm -eq "ofc") {
 
+		$installedPackagesToRemove | Remove-AppxPackage
+		Write-Host "Junk Clean Successful!"
+  
+	} 
+    
+    else {
+    	Write-Host "Packages removal aborted"
 	}
-	
-	else {
-		Write-Host "Packages removal aborted"
-	}
 
-} else {
-
+} 
+else {
 	Write-Host "None of Packages/Services are available in the system"
 }
