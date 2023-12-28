@@ -44,9 +44,11 @@ funPackages=(
 
 
 if [[ $EUID -ne 0 ]]; then
-    sudo -v  # Prompt for password
-    exec sudo "$0" "$@"  # Re-execute the script with sudo
-    exit 1  # Exit if sudo fails
+    
+    sudo -v  
+      exec sudo "$0" "$@"  
+    exit 1
+  
 fi
 
 
