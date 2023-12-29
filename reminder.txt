@@ -19,6 +19,29 @@ $ sudo service iptables restart
 // NOW: It is supposed that your rules are set across reboots 
 // and you can also manually configure this file on /etc/sysconfig/iptables using vim/nano
 
+#----------------------------------------------------------------------------------------------
+
+1.2 Firewalld 
+
+/**
+* 
+* Most new systems got firewalld for easier configurations 
+* on the networks : Didn't new firewalld and IpTables does the similar thing 
+*
+*/
+
+
+$ sudo firewall-cmd --get-active-zones
+
+// Adding the ports in the firewall rules 
+$ sudo firewall-cmd --zone=public --add-port=8081/tcp --permanent
+$ sudo firewall-cmd --zone=public --add-port=8082/tcp --permanent
+
+$ sudo firewall-cmd --reload
+
+// Verify the changes
+sudo firewall-cmd --zone=public --list-ports
+
 #---------------------------------------------------------------------------------------------------------------
 #---------------------------------------------------------------------------------------------------------------
 
