@@ -102,7 +102,7 @@ $ echo "blacklist uvcvideo" | sudo tee -a /etc/modprobe.d/blacklist.conf
 --Need to be the root User
 $ su
 
--- Dir "input7::scrollock" may varies from system to system 
+-- Dir "input7::scrollock" may vary from system to system 
 $ sudo echo 1 > /sys/class/leds/input7::scrollock/brightness
 
 --ScrollLock won't function as intended though 
