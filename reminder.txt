@@ -115,7 +115,7 @@ $ sudo echo 0 > /sys/class/leds/input7::scrolllock/brightness
 *
 * GOT THE SCRIPT FOR THAT NOW : 
 * Set the shortcuts to toggle the light
-* Available at : https://github.com/isantoshgyawali/cofig/backlitFix.sh 
+* Available at : https://github.com/isantoshgyawali/config/blob/master/backlitFix.sh 
 * ( may need to tweak a little as for your system need )
 * Not recommended approach btw, Just Works for me!
 *
