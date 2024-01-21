@@ -2,7 +2,6 @@
 function url(){
 	echo -n "URL : "
 	read SITE
-
 	firefox --new-window $SITE & disown
 }
 
@@ -13,13 +12,13 @@ alias ll='ls -al'
 alias upd='sudo dnf update --refresh && sudo dnf upgrade --refresh'
 alias codx='code && exit'
 alias br='firefox & disown'
-alias gpt='xdg-open https://chat.openai.com & disown && exit'
+alias gpt='xdg-open https://chat.openai.com & disown'
 
 alias vi='nvim'
 alias svi='sudo nvim'
 
-alias yt='xdg-open https://youtube.com/ & disown && exit'
-alias ytdown='youtube-dl'
+alias yt='xdg-open https://youtube.com/ & disown'
+alias ytd='youtube-dl'
 alias tput='trash-put'
 alias tls='trash-list'
 alias tres='trash-restore'
@@ -56,4 +55,7 @@ alias isan='xdg-open https://github.com/isantoshgyawali/ & disown && exit'
 alias ga='git add .'
 alias gc='git commit -m'
 alias gs='git status'
-
+alias gcob='git checkout -b'
+alias gc='git checkout'
+alias gbv='git branch -v'
+alias gl='git log'
