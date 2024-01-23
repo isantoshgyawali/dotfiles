@@ -98,8 +98,8 @@ $ echo "blacklist uvcvideo" | sudo tee -a /etc/modprobe.d/blacklist.conf
 
 4. Keyboard Backlight fix ( Not The Best and Recommended Approach )
 
--- Need to be the root User
 -- dir "input7::scrollock" may vary from system to system 
+$ sudo chmod 777 /sys/class/leds/input7::scrolllock/brightness
 $ sudo echo 1 > /sys/class/leds/input7::scrollock/brightness
 
 --ScrollLock won't function as intended though 
