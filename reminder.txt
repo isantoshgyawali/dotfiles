@@ -1,6 +1,6 @@
-#---------------------------------#
-| Remembering's for clean Install |
-#---------------------------------#
+#-----------------------------------#
+| Remembering's Just Incase needed  |
+#-----------------------------------#
 
 1. ipTables Rule : 
 
@@ -51,7 +51,6 @@ sudo firewall-cmd --zone=public --list-ports
 * If installing the Vanilla System ("NOT SURE ON OTHER DISTRO'S")
 * but in my case [ "FEDORA-MINIMAL" ] :
 * install these Package to work with the Networks and Wi-Fi
-* 
 */
 
 $ sudo $package-manager install networkmanager
@@ -80,7 +79,7 @@ $ sudo dev wifi show-password
 #---------------------------------------------------------------------------------------------------------------
 #---------------------------------------------------------------------------------------------------------------
 
-3. Disabling Camera from the system 
+3. Disabling Camera from the system [ maybe some security purpose, well Just wanted it so ] 
 
 $ sudo mdprobe -r uvcvideo 
 --disable the camera driver untill next-reboot
@@ -99,10 +98,8 @@ $ echo "blacklist uvcvideo" | sudo tee -a /etc/modprobe.d/blacklist.conf
 
 4. Keyboard Backlight fix ( Not The Best and Recommended Approach )
 
---Need to be the root User
-$ su
-
--- Dir "input7::scrollock" may vary from system to system 
+-- Need to be the root User
+-- dir "input7::scrollock" may vary from system to system 
 $ sudo echo 1 > /sys/class/leds/input7::scrollock/brightness
 
 --ScrollLock won't function as intended though 
@@ -120,3 +117,49 @@ $ sudo echo 0 > /sys/class/leds/input7::scrolllock/brightness
 * Not recommended approach btw, Just Works for me!
 *
 */
+
+#--------------------------------------------------------------------------------------------------------------------
+#--------------------------------------------------------------------------------------------------------------------
+
+5. Expo-CLI : ACCESSING THE NATIVE MODULES  
+
+/**
+*
+* @INSTALL : ADB [ANDROID DEBUG BRIDGE]
+* This is required to Build the native modules for the Andooid ( "Expo won't work" )
+*
+* This is essential as building the EXPO_APP for the use of native modules like :
+* Authentication , Accessing fileSystem , calendar and Camera while expo won't work for building this app on the expo go
+*
+*/ 
+
+-- Install the AndroidStudio [ Don't require emulator to run just it comes up with Android/Sdk ]
+-- Install from "https://developer.android.com/studio" then : 
+$ tar xf path/to/source.tar[.gz|.bz2|.xz] --directory=path/to/directory
+
+-- this will install AndroidStudio with Android/Sdk/{ platform-tools, buildtools , platforms , emulator ..... }
+$ cd {download_location}/android-studio/bin && ./studio.sh
+
+-- Now add the Android/Sdk to Path to use Binaries from dir : add this to .bashrc/.zshrc/...
+
+# --- androidStudio ---
+export ANDROID_HOME="$HOME/Android/Sdk"
+export PATH="$PATH:$ANDROID_HOME/platform-tools"
+
+-/**
+*
+* npx expo start starts the Metro Bundler, which is used for serving the JavaScript part of the app.
+* However, itdoesn’t build the native code that is required by the native modules so is the reason we installed ADB.
+*
+*/
+
+-- NOW AFTER IT GET'S START YOU CAN PROCEED TO CONNECTING TO "PHYSICAL DEVICE" 
+1. CONNECT DEVICE TO USB 
+2. TURN ON THE USB DEBUGGING from DEVELOPER OPTIONS 
+
+-- open one another terminal window other then start the developement server 
+$ adb devices start-sever 
+$ yarn/bun/npm start && then type a
+
+TADA!!
+
