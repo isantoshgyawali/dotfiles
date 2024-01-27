@@ -10,10 +10,12 @@ function url(){
 #-------------------
 alias ll='ls -al'
 alias upd='sudo dnf update --refresh && sudo dnf upgrade --refresh'
-alias codx='code && exit'
 alias br='firefox & disown'
 alias gpt='xdg-open https://chat.openai.com & disown'
+alias bing='firefox --private-window bing.com/chat && disown'
 
+alias t='tmux'
+alias c='code'
 alias vi='nvim'
 alias svi='sudo nvim'
 
@@ -32,9 +34,10 @@ alias e='exit'
 
 alias fcp='xsel --clipboard < $(fzf)'
 alias pwc='pwd | xsel --clipboard'
-#---------------------
-#  dir/files search   |
-#---------------------
+
+#-------------
+#  dir/files  |
+#-------------
 alias open='vi $( find $HOME -type f | fzf --preview "bat --color always {}")'
 alias goto='cd $(find $HOME -type d | fzf) | ll; printf "\033c" && pwd'
 
