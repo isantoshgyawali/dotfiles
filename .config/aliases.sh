@@ -20,7 +20,7 @@ alias vi='nvim'
 alias svi='sudo nvim'  
 
 alias yt='xdg-open https://youtube.com/ & disown'
-alias ytdown='youtube-dl'
+alias ytd='youtube-dl'
 alias tput='trash-put'
 alias tls='trash-list'
 alias tres='trash-restore'
@@ -32,10 +32,7 @@ alias df='duf'
 
 alias e='exit'
 
-alias con='source $HOME/con'
-alias key='xsel --clipboard < $HOME/key.txt'
 alias fcp='xsel --clipboard < $(find ~ -type f | fzf)'
-
 alias pwc='pwd | xsel --clipboard'
 
 #tgpt 
