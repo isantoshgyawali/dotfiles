@@ -1,4 +1,4 @@
-#Installation of MsOffice - LTSC-2021
+# Installation of MsOffice - LTSC-2021
 
 -- run cmd/powershell with sudo privilleges 
 -- change dir to the this downloaded dir path
