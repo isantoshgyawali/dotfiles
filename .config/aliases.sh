@@ -27,9 +27,10 @@ function yt(){
 #-------------------
 alias ll='ls -al --classify'
 alias upd='sudo dnf update --refresh && sudo dnf upgrade --refresh'
-alias br='win 1 | firefox > /dev/null 2>&1 & disown'
-alias gpt='win 1 | firefox https://chat.openai.com & disown'
-alias bing='win 1 | firefox --private-window https://www.bing.com/chat && disown'
+alias br='firefox > /dev/null 2>&1 & disown | win 1'
+alias gpt='firefox https://chat.openai.com & disown | win 1'
+alias bing='firefox --private-window https://www.bing.com/chat && disown | win 1'
+alias gemini='firefox https://gemini.google.com/ && disown | win 1'
 
 alias t='tmux'
 alias c='code'
@@ -58,18 +59,26 @@ alias tt='tgpt -i'
 #-----------------------
 #  dir/files navigate   |
 #------------ ----------
+alias flf='du -shx -- * | sort -rh | head -10' #prints out the top 10 largest files in current dir 
+
 alias o='find $HOME -type f | fzf --height 69% --reverse --exact --preview "bat --color always {}" | xargs -r nvim'
 alias g='cd `find $HOME -type d | fzf --height 69% --reverse --exact`'
 
 alias ..='cd ..'
 alias ...='cd ../..'
+alias ....='cd ../../..'
 
 alias hf='eval "$(history | fzf --reverse --height 50% --exact | sed "s/^[ ]*[0-9]*[ ]*//")"'
 
 #-------------------
 #  System Aliases   |
 #-------------------
+alias shut='sudo poweroff'
+alias reo='sudo poweroff --reboot now' 
 alias px='ps aux | fzf'
+
+alias bto='rfkill unblock bluetooth && bluetoothctl power on && bluetoothctl connect 6F:F8:B2:4B:E2:10'
+alias btc='bluetoothctl power off && rfkill block bluetooth'
 
 function pk(){
 #-- get the PID of the selected process
@@ -93,10 +102,11 @@ fi
 #-------------
 #  git_quick  |
 #-------------
-alias isan='win 1 | xdg-open https://github.com/isantoshgyawali/ & disown && exit'
+alias isan='xdg-open https://github.com/isantoshgyawali/ & disown && exit | win 1'
 alias ga='git add .'
 alias gc='git commit -m'
 alias gs='git status --short'
+alias gd='git diff'
 
 alias gco='git checkout'
 alias gcob='git checkout -b'
@@ -107,5 +117,6 @@ alias gba='git branch -avv'
 alias gl='git log'
 alias gla='git log -a --decorate --oneline --graph'
 alias glf='git log -n 5 --decorate --oneline --graph'
-alias gp='git push'
+alias gcl='key && git clone'
+alias gp='key && git push'
 
