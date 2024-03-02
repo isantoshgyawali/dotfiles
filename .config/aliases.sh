@@ -120,3 +120,25 @@ alias glf='git log -n 5 --decorate --oneline --graph'
 alias gcl='key && git clone'
 alias gp='key && git push'
 
+#---------------------------------------
+#  others - generally project specific  |
+#---------------------------------------
+
+#define current working with bash and 
+#make it executable in the home dir 
+#then use it as a alias from here or make shortcut key to open
+#your current project you are working on and frequently acess
+#
+#example | for st
+#  cd ~/projects && <your-code-editor> . && tmux
+alias pro="~/pro"
+
+function cl(){
+	read -p "Enter port:" port || port=8081
+	read -p "path:" path || path=""
+
+	#checks if the path is empty and if not then adds the $path
+	url="localhost:$port/${path:+$path/}"
+	exec curl "$url"
+}
+
