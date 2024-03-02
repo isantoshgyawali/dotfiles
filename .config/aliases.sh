@@ -134,11 +134,12 @@ alias gp='key && git push'
 alias pro="~/pro"
 
 function cl(){
-	read -p "Enter port:" port || port=8081
-	read -p "path:" path || path=""
+	read -p "Enter port:" port
+	read -p "path:" path
 
-	#checks if the path is empty and if not then adds the $path
-	url="localhost:$port/${path:+$path/}"
-	exec curl "$url"
+	#-- if the port is empty assign the default value 8081 and if not then uses the $port
+	#-- checks if the path is empty and if not then adds the $path else leave it
+	url="localhost:${port:=8081}/${path:+$path/}"
+	curl "$url"
 }
 
