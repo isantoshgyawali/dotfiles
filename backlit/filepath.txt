@@ -1,1 +1,1 @@
-/sys/class/leds/input7::scrolllock/brightness
+/sys/class/leds/input20::scrolllock/brightness

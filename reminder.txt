@@ -146,7 +146,7 @@ $ cd {download_location}/android-studio/bin && ./studio.sh
 export ANDROID_HOME="$HOME/Android/Sdk"
 export PATH="$PATH:$ANDROID_HOME/platform-tools"
 
--/**
+/**
 *
 * npx expo start starts the Metro Bundler, which is used for serving the JavaScript part of the app.
 * However, itdoesn’t build the native code that is required by the native modules so is the reason we installed ADB.
@@ -157,9 +157,63 @@ export PATH="$PATH:$ANDROID_HOME/platform-tools"
 1. CONNECT DEVICE TO USB 
 2. TURN ON THE USB DEBUGGING from DEVELOPER OPTIONS 
 
--- open one another terminal window other then start the developement server 
-$ adb devices start-sever 
+-- also wireless debugging is possible 
+-- I generally set the tcpip port fixed to make access it faster
+
+$ adb tcip 5555 //-- setting to listen at port 5555
+
+//-- if you don't want to set a fixed port to listen 
+//-- you have to manually enter the port each time you want to connect 
+$ adb connect <android-device-ip>:port
+
+
+//REMEMBER : this setting of the port is not persistent across android reboots
+// 	     you can check that if you want, I generally don't reboot so..., and it's not neccessary though
+
+-- open one another terminal window then start the developement server 
 $ yarn/bun/npm start && then type a
 
 TADA!!
 
+#--------------------------------------------------------------------------------------------------------------------
+#--------------------------------------------------------------------------------------------------------------------
+
+6. Creating a Postgres DB
+
+-- first install the postgres
+$ sudo dnf install postgresql-16 postgresql16-contrib //-- contrib is for some additional extensions or features 
+
+-- initiallize the database cluster in the system and start the service 
+$ sudo postgresql-setup --initdb //-- located at /var/lib/pgsql/data
+$ sudo systemctl start postgresql
+
+-- then you can create db directly or create a user and add role to the postgres
+$ sudo adduser <username> 		    //-- this for adding user in the system 
+$ sudo -u postgres createuser --interactive //-- this for adding user for the database access
+
+-- now create a new database 
+$ sudo -u postgres createdb <database-name>
+
+//-- giving db-name and username with role in postgres, same will be easier and make a distinct seperation
+$ sudo -u <username> psql -d <database-name>
+
+and if both are same then just do 
+$ sudo -u <user-name> psql 
+
+//-- basic setup is done 
+//-- There is RLS (Row Level Security) controls and options for the postgres if you want to set those check those out
+
+//-- on production level database is hard after you hit some threshold and we should take very minor things
+//-- into considerations even like who have access to which tables
+
+//-- for setting password , run psql but before the encryption is set for the first time 
+
+postgres=#ALTER ROLE postgres PASSWORD <your-password>;
+//-- similarly you do do for other user too...
+
+$ sudo vim /var/lib/pgsql/data/pg_hba.conf
+//-- tweak the indent/peer method to md5 for now if you want authentication
+//-- currently I have made everything to use method "trust" while development but change it to 
+
+//-- "md5" or better "scram-sha-256" encryption while  and restart the postgresql service 
+$ sudo systemctl restart postgresql
