@@ -20,3 +20,7 @@ what is hapening down here is: <br/>
  
  @- now, I thing to be done is : adding the execute using alias or path, <br/>
     alias lto="sudo ~/config/backlit/lto"
+
+# Better fix - [ method 2 ]
+just run kbBacklit.sh on some keybinds 
+as its way easier to implement and grasp and works well on both x/wayland server
