@@ -1,3 +1,0 @@
--- treesitter configuration
--- lsp server
--- debugging tools
