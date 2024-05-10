@@ -24,10 +24,8 @@ $ sudo service iptables restart
 1.2 Firewalld 
 
 /**
-* 
 * Most new systems got firewalld for easier configurations 
 * on the networks : Didn't new firewalld and IpTables does the similar thing 
-*
 */
 
 
@@ -53,7 +51,7 @@ sudo firewall-cmd --zone=public --list-ports
 * install these Package to work with the Networks and Wi-Fi
 */
 
-$ sudo $package-manager install networkmanager
+$ sudo $package-manager install NetworkManager
 $ sudo reboot 
 
 -- After the reboot : you may use the "nmcli" or for ease 
@@ -65,10 +63,10 @@ $ sudo nmcli radio wifi on
 $ nmcli radio wifi // returns the status (enabled/disabled)
 
 -- list the connection: 
-$ sudo dev wifi list 
+$ nmcli dev wifi list 
 
 -- connect 
-$ sudo dev wifi connect <SSID> password <PASSWORD>
+$ sudo nmcli dev wifi connect <SSID> password <PASSWORD>
 
 -- list active connection
 $ nmcli connection show --active
@@ -181,10 +179,10 @@ TADA!!
 6. Creating a Postgres DB
 
 -- first install the postgres
-$ sudo dnf install postgresql-16 postgresql16-contrib //-- contrib is for some additional extensions or features 
+$ sudo dnf install postgresql16 postgresql16-server postgresql16-contrib //-- contrib is for some additional extensions or features 
 
 -- initiallize the database cluster in the system and start the service 
-$ sudo postgresql-setup --initdb //-- located at /var/lib/pgsql/data
+$ sudo postgresql-setup --inintdb //-- located at /var/lib/pgsql/data
 $ sudo systemctl start postgresql
 
 -- then you can create db directly or create a user and add role to the postgres
@@ -203,16 +201,17 @@ $ sudo -u <user-name> psql
 //-- basic setup is done 
 //-- There is RLS (Row Level Security) controls and options for the postgres if you want to set those check those out
 
-//-- on production level database is hard after you hit some threshold and we should take very minor things
+//-- on production level database is hard after you hit some threshold and take every minor things
 //-- into considerations even like who have access to which tables
 
 //-- for setting password , run psql but before the encryption is set for the first time 
 
-postgres=#ALTER ROLE postgres PASSWORD <your-password>;
+postgres=#ALTER ROLE postgres WITH PASSWORD <your-password>;
 //-- similarly you do do for other user too...
+//-- this is for setting the db password but it's different from the user password which is shown below
 
 $ sudo vim /var/lib/pgsql/data/pg_hba.conf
-//-- tweak the indent/peer method to md5 for now if you want authentication
+//-- tweak the indent/peer method to mdr for now if you want authentication
 //-- currently I have made everything to use method "trust" while development but change it to 
 
 //-- "md5" or better "scram-sha-256" encryption while  and restart the postgresql service 

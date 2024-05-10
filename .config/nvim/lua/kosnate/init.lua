@@ -1,2 +1,0 @@
-require("kosnate.remap")
-
