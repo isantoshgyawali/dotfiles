@@ -88,8 +88,8 @@ alias hf='eval "$(history | fzf --reverse --height 50% --exact | sed "s/^[ ]*[0-
 #-------------------
 #  System Aliases   |
 #-------------------
-alias shut='sudo poweroff'
-alias reo='sudo poweroff --reboot now' 
+alias shut='systemctl poweroff'
+alias reo='systemctl reboot' 
 alias px='ps aux | fzf'
 
 alias bto='rfkill unblock bluetooth && bluetoothctl power on && bluetoothctl connect 6F:F8:B2:4B:E2:10'
@@ -122,7 +122,7 @@ alias phone="sshfs -p 8022 $DEV:/storage/emulated/0/ ~/phone/"
 #-------------
 #  git_quick  |
 #-------------
-alias isan='xdg-open https://github.com/isantoshgyawali/ & disown && exit'
+alias isan='xdg-open https://github.com/isantoshgyawali/ & disown'
 alias ga='git add .'
 alias gac='git add . && git commit -m'
 alias gc='git commit -m'

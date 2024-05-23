@@ -62,7 +62,7 @@ tooltip label{
 #workspaces button {
     color: white;
     border-radius: 1px;
-    padding: 4px 4px;
+    padding: 5px 5px;
     margin-right: 4px;
 }
 #workspaces button:hover {
@@ -139,14 +139,7 @@ tooltip label{
 
 #taskbar button.active {
     background-color: rgba(255, 255, 255, 0.8);
-    padding-left: 6px;
-    padding-right: 6px;
-    animation: gradient_f 20s ease-in infinite;
-    transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
-}
-
-#taskbar button:hover {
-    animation: gradient_f 20s ease-in infinite;
+    animation: gradient_f 10s ease-in infinite;
     transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
 }
 

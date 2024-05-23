@@ -7,10 +7,8 @@
 $ sudo iptables -A INPUT -p tcp --dport 8081 -j ACCEPT
 
 /** 
-*  
 * This will set the 8081 port with tcp protocol in the /etc/sysconfig/iptables (fedora)
 * also need to save this using the iptables-service / iptables-persistent
-*
 */
 
 $ sudo iptables-save > /etc/sysconfig/iptables
@@ -77,12 +75,12 @@ $ sudo dev wifi show-password
 #---------------------------------------------------------------------------------------------------------------
 #---------------------------------------------------------------------------------------------------------------
 
-3. Disabling Camera from the system [ maybe some security purpose, well Just wanted it so ] 
+3. Disabling Camera and microphone from the system [ maybe some security purpose, well Just wanted it so ] 
 
-$ sudo mdprobe -r uvcvideo 
+$ sudo modprobe -r uvcvideo 
 --disable the camera driver untill next-reboot
 
-$ sudo mdprobe uvcvideo 
+$ sudo modprobe uvcvideo 
 --enable the module in the kernel into the kernel enabling support for cam
 --but after the blacklisting of the module it can't be done using this way 
 
@@ -90,6 +88,8 @@ $ sudo mdprobe uvcvideo
 $ echo "blacklist uvcvideo" | sudo tee -a /etc/modprobe.d/blacklist.conf
 --disabling camera persistently across reboots 
 --can manually undone editing file /etc/modprobe.d/blacklist.conf as root 
+
+btw, just disable the microphone and camera from bios :)))
 
 #---------------------------------------------------------------------------------------------------------------
 #---------------------------------------------------------------------------------------------------------------
@@ -107,13 +107,11 @@ $ sudo echo 1 > /sys/class/leds/input7::scrollock/brightness
 $ sudo echo 0 > /sys/class/leds/input7::scrolllock/brightness
 
 /** 
-*
 * GOT THE SCRIPT FOR THAT NOW : 
 * Set the shortcuts to toggle the light
 * Available at : https://github.com/isantoshgyawali/config/blob/master/backlitFix.sh 
 * ( may need to tweak a little as for your system need )
 * Not recommended approach btw, Just Works for me!
-*
 */
 
 #--------------------------------------------------------------------------------------------------------------------
@@ -122,13 +120,11 @@ $ sudo echo 0 > /sys/class/leds/input7::scrolllock/brightness
 5. Expo-CLI : ACCESSING THE NATIVE MODULES  
 
 /**
-*
 * @INSTALL : ADB [ANDROID DEBUG BRIDGE]
 * This is required to Build the native modules for the Andooid ( "Expo won't work" )
 *
 * This is essential as building the EXPO_APP for the use of native modules like :
 * Authentication , Accessing fileSystem , calendar and Camera while expo won't work for building this app on the expo go
-*
 */ 
 
 -- Install the AndroidStudio [ Don't require emulator to run just it comes up with Android/Sdk ]
@@ -145,10 +141,8 @@ export ANDROID_HOME="$HOME/Android/Sdk"
 export PATH="$PATH:$ANDROID_HOME/platform-tools"
 
 /**
-*
 * npx expo start starts the Metro Bundler, which is used for serving the JavaScript part of the app.
 * However, itdoesn’t build the native code that is required by the native modules so is the reason we installed ADB.
-*
 */
 
 -- NOW AFTER IT GET'S START YOU CAN PROCEED TO CONNECTING TO "PHYSICAL DEVICE" 
