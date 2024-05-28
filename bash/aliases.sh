@@ -62,7 +62,7 @@ alias df='duf'
 alias e='exit'
 
 alias key='cat $HOME/key.txt | wl-copy'
-alias fcp='cat $(find ~ -type f | fzf --height 69% --exact --reverse --preview "bat --color always {}") | wl-copy'
+alias fcp='cat $(find ~/{projects,backups,dotfiles,.config} $HOME -type f| fzf --height 69% --exact --reverse --preview "bat --color always {}") | wl-copy'
 
 alias pwc='pwd | wl-copy'
 
@@ -76,8 +76,9 @@ alias tt='tgpt -i'
 #-----------
 alias flf='du -shx -- * | sort -rh | head -10' #prints out the top 10 largest files in current dir 
 
-alias o='find $HOME -type f | grep -v '/phone$'| fzf --height 69% --reverse --exact --preview "bat --color always {}" | xargs -r nvim'
-alias g='cd `find $HOME -type d | grep -v '/phone$'| fzf --height 69% --reverse --exact`'
+#directories def'n for prioritzation
+alias o='find ~/{projects,backups,dotfiles,.config} $HOME -type f | grep -v '/phone$'| fzf --height 69% --reverse --exact --preview "bat --color always {}" | xargs -r nvim'
+alias g='cd `find ~/{projects,backups,dotfiles,.config} $HOME -type d | grep -v '/phone$'| fzf --height 69% --reverse --exact`'
 
 alias ..='cd ..'
 alias ...='cd ../..'
