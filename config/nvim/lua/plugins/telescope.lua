@@ -9,16 +9,15 @@ return {
 
       defaults = {
          file_ignore_patterns = {
-            "phone/.*",
             "Android/Sdk/.*",
-            "node_modules/.*",
+            "node_modules/*",
             "%.env",
             "yarn.lock",
             "package-lock.json",
             "lazy-lock.json",
             "init.sql",
             "target/.*",
-            ".git/.*",
+            ".git/*",
         },
       },
 

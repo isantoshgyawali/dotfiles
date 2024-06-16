@@ -71,13 +71,15 @@ alias tco='tgpt -c'
 alias tim='tgpt -img'
 alias tt='tgpt -i'
 
+alias vne='source ./myenv/bin/activate'
+
 #-----------
 # dir/files |
 #-----------
 alias flf='du -shx -- * | sort -rh | head -10' #prints out the top 10 largest files in current dir 
 
 #directories def'n for prioritzation
-alias o='find ~/{projects,backups,dotfiles,.config} $HOME -type f -path ~/phone -prune -o -print | fzf --height 69% --reverse --exact --preview "bat --color always {}" | xargs -r nvim'
+alias o='find ~/.bashrc ~/{projects,backups,dotfiles,.config} $HOME -type f -path ~/phone -prune -o -print | fzf --height 69% --reverse --exact --preview "bat --color always {}" | xargs -r nvim'
 alias g='cd `find ~/{projects,backups,dotfiles,.config} $HOME -type d -path ~/phone -prune -o -print | fzf --height 69% --reverse --exact`'
 
 alias ..='cd ..'

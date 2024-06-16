@@ -75,3 +75,9 @@ export PATH="$PATH:$ANDROID_HOME/platform-tools"
 # --- bun ---
 export BUN_INSTALL="$HOME/.bun"
 export PATH=$BUN_INSTALL/bin:$PATH
+
+# --- pyenv ---  
+# [python version management]
+export PATH="$HOME/.pyenv/bin:$PATH"
+eval "$(pyenv init --path)"
+eval "$(pyenv virtualenv-init -)"
