@@ -132,6 +132,8 @@ alias gc='git commit -m'
 alias gs='git status --short'
 alias gd='git diff'
 
+alias gu='git reset --soft HEAD~1'
+
 alias gco='git checkout'
 alias gcob='git checkout -b'
 

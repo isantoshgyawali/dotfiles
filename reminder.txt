@@ -176,7 +176,7 @@ TADA!!
 $ sudo dnf install postgresql16 postgresql16-server postgresql16-contrib //-- contrib is for some additional extensions or features 
 
 -- initiallize the database cluster in the system and start the service 
-$ sudo postgresql-setup --inintdb //-- located at /var/lib/pgsql/data
+$ sudo postgresql-setup --initdb //-- located at /var/lib/pgsql/data
 $ sudo systemctl start postgresql
 
 -- then you can create db directly or create a user and add role to the postgres
@@ -204,7 +204,7 @@ postgres=#ALTER ROLE postgres WITH PASSWORD <your-password>;
 //-- similarly you do do for other user too...
 //-- this is for setting the db password but it's different from the user password which is shown below
 
-$ sudo vim /var/lib/pgsql/data/pg_hba.conf
+$ sudo nvim /var/lib/pgsql/data/pg_hba.conf
 //-- tweak the indent/peer method to mdr for now if you want authentication
 //-- currently I have made everything to use method "trust" while development but change it to 
 
