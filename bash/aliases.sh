@@ -79,8 +79,8 @@ alias vne='source ./myenv/bin/activate'
 alias flf='du -shx -- * | sort -rh | head -10' #prints out the top 10 largest files in current dir 
 
 #directories def'n for prioritzation
-alias o='find ~/.bashrc ~/{projects,backups,dotfiles,.config} $HOME -type f -path ~/phone -prune -o -print | fzf --height 69% --reverse --exact --preview "bat --color always {}" | xargs -r nvim'
-alias g='cd `find ~/{projects,backups,dotfiles,.config} $HOME -type d -path ~/phone -prune -o -print | fzf --height 69% --reverse --exact`'
+alias o='find ~/.bashrc ~/{projects,backups,dotfiles,.config} $HOME -path ~/phone -prune -o -type f -print | fzf --height 69% --reverse --exact --preview "bat --color always {}" | xargs -r nvim'
+alias g='cd $(find ~/{projects,backups,dotfiles,.config} ~ \( -path ~/phone -o -name .git \) -prune -o -type d -print | fzf --height 69% --reverse --exact)'
 
 alias ..='cd ..'
 alias ...='cd ../..'
