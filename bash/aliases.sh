@@ -86,7 +86,7 @@ alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
 
-alias hf='eval "$(history | fzf --reverse --height 50% --exact | sed "s/^[ ]*[0-9]*[ ]*//")"'
+alias hf='cmd=$(history | fzf --reverse --height 50% --exact | sed "s/^[ ]*[0-9]*[ ]*//"); echo $cmd; eval "$cmd"'
 
 #-------------------
 #  System Aliases   |
