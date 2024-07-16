@@ -160,7 +160,3 @@ function cl(){
 	url="localhost:${port:=8081}/${path:+$path/}"
 	curl "$url"
 }
-
-function ta(){
-     tmux attach -t $(t ls | fzf --reverse --margin=10,10 --border=rounded --color=dark --border-label='  find-sessions  ' | awk '{ print $1 }' | sed 's/://')
-}
