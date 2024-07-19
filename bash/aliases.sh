@@ -146,6 +146,8 @@ alias glf='git log -n 5 --decorate --oneline --graph'
 alias gcl='key && git clone'
 alias gp='key && git push'
 
+alias lg='lazygit'
+
 #---------------------------------------
 #  others - generally project specific  |
 #---------------------------------------
@@ -157,6 +159,6 @@ function cl(){
 
 	#-- if the port is empty assign the default value 8081 and if not then uses the $port
 	#-- checks if the path is empty and if not then adds the $path else leave it
-	url="localhost:${port:=8081}/${path:+$path/}"
+	url="localhost:${port:=8080}/${path:+$path/}"
 	curl "$url"
 }
