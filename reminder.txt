@@ -187,7 +187,15 @@ $ sudo -u postgres createuser --interactive //-- this for adding user for the da
 $ sudo -u postgres createdb <database-name>
 
 //-- giving db-name and username with role in postgres, same will be easier and make a distinct seperation
+
+1> using psql 
 $ sudo -u <username> psql -d <database-name>
+
+2> using pgcli 
+$ pip instal pgcli 
+$ python -m venv myenv 
+$ source ./myenv/bin/activate
+$ pgcli -H host_name -U user_name -d databas_name
 
 and if both are same then just do 
 $ sudo -u <user-name> psql 
