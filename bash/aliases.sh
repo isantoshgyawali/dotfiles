@@ -39,6 +39,7 @@ function dk(){
 #-------------------
 alias la='ls -a'
 alias ll='ls -al --classify'
+alias sb='source ~/.bashrc'
 alias upd='sudo dnf update --refresh && sudo dnf upgrade --refresh'
 alias br='firefox > /dev/null 2>&1 & disown'
 alias gpt='firefox https://chat.openai.com & disown'
