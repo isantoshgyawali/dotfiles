@@ -49,7 +49,7 @@ sudo firewall-cmd --zone=public --list-ports
 * install these Package to work with the Networks and Wi-Fi
 */
 
-$ sudo $package-manager install NetworkManager
+$ sudo $package-manager install NetworkManager NetworkManager-wifi
 $ sudo reboot 
 
 -- After the reboot : you may use the "nmcli" or for ease 
@@ -192,8 +192,8 @@ $ sudo -u postgres createdb <database-name>
 $ sudo -u <username> psql -d <database-name>
 
 2> using pgcli 
-$ pip instal pgcli 
 $ python -m venv myenv 
+$ pip install pgcli 
 $ source ./myenv/bin/activate
 $ pgcli -H host_name -U user_name -d databas_name
 
