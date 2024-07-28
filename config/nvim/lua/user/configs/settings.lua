@@ -13,6 +13,7 @@ vim.o.wrap = false
 vim.o.number = true
 vim.o.relativenumber = true
 vim.o.termguicolors = true
+vim.o.cursorline = true
 
 -- Behavior 
 vim.o.swapfile = false
@@ -26,4 +27,3 @@ vim.opt.scrolloff = 8
 -- search
 vim.o.hlsearch = false
 vim.o.incsearch = true
-

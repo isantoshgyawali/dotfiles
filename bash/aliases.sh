@@ -82,6 +82,7 @@ alias flf='du -shx -- * | sort -rh | head -10' #prints out the top 10 largest fi
 #directories def'n for prioritzation
 alias o='find ~/.bashrc ~/{projects,backups,dotfiles,.config} $HOME -path ~/phone -prune -o -type f -print | fzf --height 69% --reverse --exact --preview "bat --color always {}" | xargs -r nvim'
 alias g='cd $(find ~/{projects,backups,dotfiles,.config} ~ \( -path ~/phone -o -name .git \) -prune -o -type d -print | fzf --height 69% --reverse --exact)'
+alias v='cd $(find ~/{projects,backups,dotfiles,.config} ~ \( -path ~/phone -o -name .git \) -prune -o -type d -print | fzf --height 69% --reverse --exact) && nvim .'
 
 alias ..='cd ..'
 alias ...='cd ../..'
@@ -96,7 +97,7 @@ alias shut='systemctl poweroff'
 alias reo='systemctl reboot' 
 alias px='ps aux | fzf'
 
-alias bto='rfkill unblock bluetooth && bluetoothctl power on && bluetoothctl connect 6F:F8:B2:4B:E2:10'
+alias bto='rfkill unblock bluetooth && bluetoothctl power on && bluetoothctl connect 11:F5:BD:C2:3C:D4'
 alias btc='bluetoothctl power off && rfkill block bluetooth'
 
 function pk(){

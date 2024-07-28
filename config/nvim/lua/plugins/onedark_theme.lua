@@ -14,6 +14,10 @@ return {
         strings = 'none',
         variables = 'none',
       },
+        highlights = {
+            CursorLineNr = { fg = '#00daff', bold = true }, -- Use the defined red color
+            LineNr = { fg = '#5C6370', bold = true }, -- Use the defined grey color
+        }
     }
   end
 }
