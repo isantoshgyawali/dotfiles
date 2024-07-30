@@ -2,6 +2,12 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
+-- copy file content
+vim.keymap.set({"n", "v"}, "<leader><leader>", ":%y+<CR>")
+
+-- formatall
+vim.keymap.set({"n", "v"}, "<leader>=", "gg=G``" )
+
 --ThePrimeagen/References:
 --move selection
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
