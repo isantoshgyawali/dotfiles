@@ -3,9 +3,9 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 -- copy file content
-vim.keymap.set({"n", "v"}, "<leader><leader>", ":%y+<CR>")
+vim.keymap.set("n", "<leader><leader>", ":%y+<CR>")
 
--- formatall
+-- file indentation
 vim.keymap.set({"n", "v"}, "<leader>=", "gg=G``" )
 
 --ThePrimeagen/References:

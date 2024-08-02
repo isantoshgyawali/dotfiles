@@ -1,10 +1,10 @@
 --commenting [comment.nvim]
-vim.api.nvim_set_keymap("n", "<C-/>", "gcc", {})
-vim.api.nvim_set_keymap("i", "<C-/>", "<ESC>gcca", {})
-vim.api.nvim_set_keymap("v", "<c-/>", "gc", {})
+vim.api.nvim_set_keymap("n", "<C-;", "gcc", {})
+vim.api.nvim_set_keymap("i", "<C-;>", "<ESC>gcca", {})
+vim.api.nvim_set_keymap("v", "<C-;>", "gc", {})
 
 vim.api.nvim_set_keymap("n", "<C-\\>", "gbc", {}) --for multiline comment-box
-vim.api.nvim_set_keymap("v", "<C-\\>", "gb", {}) -- in visual mode
+vim.api.nvim_set_keymap("v", "<C-\\>", "gb", {}) -- in visual mode 
 vim.api.nvim_set_keymap("n", "<leader>\\", "gcA", {}) -- comment to the last of the line
 
 return {
