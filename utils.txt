@@ -1,0 +1,10 @@
+//-- FILE SHARING ft. 0x0.st
+curl -F="file=@<filename>" 0x0.st
+
+//-- SCREEN SHARING ft. screesy.marijn.it
+
+//-- YOUTUBE DOWNLOADS && ENCODING ft. yt-dlp 
+// tldr yt-dlp for more
+
+eg: EXTRACTING AUDIO FROM Yt_Videos in mp3 FORMAT 
+yt-dlp --extract-audio --audio-format mp3 --audio-quality 0 <youtube-link>
