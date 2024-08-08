@@ -4,14 +4,12 @@ function yt(){
 
 	#-- checking if the input is available
 	if [ -z "$search_query" ]; then
-		xdg-open "https://www.youtube.com/"
+		xdg-open "https://www.youtube.com/" > /dev/null 2&1 & disown
 	fi
 
   #-- sed checks the space and replace it with + globally
   #-- and encoded query is constructed
   encoded_query=$(echo "$search_query" | sed 's/ /+/g')
- 
-  wmctrl -s 1 
   youtube_url="https://www.youtube.com/results?search_query=$encoded_query"
   xdg-open "$youtube_url" > /dev/null 2>&1 & disown
 }
