@@ -4,7 +4,7 @@ function yt(){
 
 	#-- checking if the input is available
 	if [ -z "$search_query" ]; then
-		xdg-open "https://www.youtube.com/" > /dev/null 2&1 & disown
+		xdg-open "https://www.youtube.com/" > /dev/null 2>&1 & disown
 	fi
 
   #-- sed checks the space and replace it with + globally
