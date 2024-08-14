@@ -8,6 +8,10 @@ vim.keymap.set("n", "<leader><leader>", ":%y+<CR>")
 -- file indentation
 vim.keymap.set({"n", "v"}, "<leader>=", "gg=G``" )
 
+-- buffer movement
+vim.keymap.set("n", "<Tab>", ":bnext<CR>", {noremap=true})
+vim.keymap.set("n", "<S-Tab>", ":bprev<CR>", {noremap=true})
+
 --ThePrimeagen/References:
 --move selection
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
