@@ -15,24 +15,6 @@ function yt(){
   xdg-open "$youtube_url" > /dev/null 2>&1 & disown
 }
 
-#-- browser search
-function dk(){
-	read -p "search: " search_query
-	#-- checking if the input is available
-	if [ -z "$search_query" ]; then
-		echo "please provide a search query."
-		return 1
-	fi
-
-  #-- sed checks the space and replace it with + globally
-  #-- and encoded query is constructed
-  encoded_query=$(echo "$search_query" | sed 's/ /+/g')
-
-  wmctrl -s 1 
-  search_url="https://duckduckgo.com/?q=$encoded_query"
-  xdg-open "$search_url" > /dev/null 2>&1 & disown
-}
-
 #-------------------
 #  general_aliases  |
 #-------------------
@@ -40,7 +22,6 @@ alias la='ls -a'
 alias ll='ls -al --classify'
 alias sb='source ~/.bashrc'
 alias upd='sudo dnf update --refresh && sudo dnf upgrade --refresh'
-alias br='firefox > /dev/null 2>&1 & disown'
 alias gpt='firefox https://chat.openai.com & disown'
 alias bing='firefox --private-window https://www.bing.com/chat && disown'
 alias gemini='firefox https://gemini.google.com/ && disown'
@@ -48,8 +29,8 @@ alias gemini='firefox https://gemini.google.com/ && disown'
 alias t='tmux'
 alias c='code'
 alias vi='nvim'
+alias s='scrcpy'
 
-alias ytd='youtube-dl'
 alias tput='trash-put'
 alias tls='trash-list'
 alias tres='trash-restore'
@@ -57,7 +38,6 @@ alias r='ranger'
 alias snake='nsnake'
 alias top='btop'
 alias ttype='ttyper -w 30'
-alias df='duf'
 
 alias e='exit'
 
@@ -65,11 +45,6 @@ alias key='cat $HOME/key.txt | wl-copy'
 alias fcp='cat $(find ~/{projects,backups,dotfiles,.config} $HOME -type f| fzf --height 69% --exact --reverse --preview "bat --color always {}") | wl-copy'
 
 alias pwc='pwd | wl-copy'
-
-#tgpt 
-alias tco='tgpt -c'
-alias tim='tgpt -img'
-alias tt='tgpt -i'
 
 alias vne='source ./myenv/bin/activate'
 
@@ -123,6 +98,7 @@ alias lto="sudo ~/config/backlit/lightson.sh"
 
 #MOUNTING PHONE'S STORAGE ft. sshfs
 alias phone="sshfs -p 8022 $DEV:/storage/emulated/0/ ~/phone/"
+
 #-------------
 #  git_quick  |
 #-------------
