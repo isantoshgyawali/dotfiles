@@ -19,6 +19,16 @@ export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
 export ANDROID_HOME="$HOME/Android/Sdk"
 export PATH="$PATH:$ANDROID_HOME/platform-tools"
 
+#--- npm ---
+export PATH="$HOME/.npm-global-packages/bin:$PATH"
+
+#--- pnpm ---
+export PNPM_HOME="/home/cosnate/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+
 # --- bun ---
 export BUN_INSTALL="$HOME/.bun"
 export PATH=$BUN_INSTALL/bin:$PATH

@@ -57,6 +57,3 @@ done
 for file in ~/backups/bash/*.sh; do 
 	[ -f "$file" ] && . "$file"
 done
-
-#CONTROL-R FUZZY FINDING
-#eval "$(fzf --bash --reverse --height 69% --exact)"

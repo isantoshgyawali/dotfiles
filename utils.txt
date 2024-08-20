@@ -1,5 +1,5 @@
 //-- FILE SHARING ft. 0x0.st
-curl -F="file=@<filename>" 0x0.st
+curl -F"file=@<filename>" -Fexpires=1 0x0.st
 
 //-- SCREEN SHARING ft. screesy.marijn.it
 
