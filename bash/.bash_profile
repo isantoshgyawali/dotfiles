@@ -1,10 +1,4 @@
 # .bash_profile
-
-# Get the aliases and functions
-if [ -f ~/.bashrc ]; then
-    . ~/.bashrc
-fi
-
 #------------------------
 # ENVIROMENT - VARIABLES |
 #------------------------
@@ -19,8 +13,10 @@ export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
 export ANDROID_HOME="$HOME/Android/Sdk"
 export PATH="$PATH:$ANDROID_HOME/platform-tools"
 
-#--- npm ---
-export PATH="$HOME/.npm-global-packages/bin:$PATH"
+# --- nvm : node-version-manager ---
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 #--- pnpm ---
 export PNPM_HOME="/home/cosnate/.local/share/pnpm"
@@ -38,3 +34,11 @@ export PATH=$BUN_INSTALL/bin:$PATH
 export PATH="$HOME/.pyenv/bin:$PATH"
 eval "$(pyenv init --path)"
 eval "$(pyenv virtualenv-init -)"
+
+# Get the aliases and functions
+if [ -f ~/.bashrc ]; then
+    . ~/.bashrc
+fi
+
+# eas-cli bash_completion
+eval $(eas autocomplete:script bash)

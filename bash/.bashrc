@@ -15,9 +15,13 @@ if [ -f /etc/bashrc ]; then
 	. /etc/bashrc
 fi
 
+shopt -s histappend
 #HISTSIZE
 HISTSIZE=5000
 HISTFILESIZE=5000
+export HISTCONTROL=ignoredups:erasedups
+
+PROMPT_COMMAND='history -a'
 
 #DEFAULT EDITOR
 export VISUAL=nvim;

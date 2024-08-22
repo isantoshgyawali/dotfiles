@@ -20,7 +20,7 @@ function yt(){
 #-------------------
 alias la='ls -a'
 alias ll='ls -al --classify'
-alias sb='source ~/.bashrc'
+alias sb='source ~/.bashrc && source ~/.bash_profile'
 alias upd='sudo dnf update --refresh && sudo dnf upgrade --refresh'
 alias gpt='firefox https://chat.openai.com & disown'
 alias bing='firefox --private-window https://www.bing.com/chat && disown'
