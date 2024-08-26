@@ -129,6 +129,7 @@ alias lg='lazygit'
 #  others - generally project specific  |
 #---------------------------------------
 alias gor="go run ./cmd/main/main.go"
+alias tra="tmux new-session -d && tmux send-keys -t 0 "$HOME/.config/tmux/plugins/tmux-resurrect/scripts/restore.sh" C-m && tmux attach"
 
 function cl(){
 	read -p "Enter port:" port
