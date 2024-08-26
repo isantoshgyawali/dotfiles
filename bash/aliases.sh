@@ -54,9 +54,69 @@ alias vne='source ./myenv/bin/activate'
 alias flf='du -shx -- * | sort -rh | head -10' #prints out the top 10 largest files in current dir 
 
 #directories def'n for prioritzation
-alias o='find ~/.bashrc ~/{projects,backups,dotfiles,.config} $HOME -path ~/phone -prune -o -type f -print | fzf --height 69% --reverse --exact --preview "bat --color always {}" | xargs -r nvim'
-alias g='cd $(find ~/{projects,backups,dotfiles,.config} ~ \( -path ~/phone -o -name .git \) -prune -o -type d -print | fzf --height 69% --reverse --exact)'
-alias v='cd $(find ~/{projects,backups,dotfiles,.config} ~ \( -path ~/phone -o -name .git \) -prune -o -type d -print | fzf --height 69% --reverse --exact) && nvim .'
+function o() {
+    local find_command="find ~/.bashrc ~/{projects,backups,dotfiles,.config} $HOME"
+    local excludes=(
+        "node_modules"
+        "Android"
+        "go"
+        "phone"
+        ".git"
+    )
+
+    for exclude in "${excludes[@]}"; do
+        find_command+=" -path \"*/$exclude/*\" -prune -o"
+    done
+    find_command+=" -type f -print"
+
+    eval "$find_command" | fzf --height 69% --reverse --exact --preview "bat --color always {}" | xargs -r nvim
+}
+
+function g() {
+    local selected_dir
+    local find_command="find ~/{projects,backups,dotfiles,.config} $HOME"
+    local excludes=(
+        "node_modules"
+        "Android"
+        "go"
+        "phone"
+        ".git"
+    )
+
+    for exclude in "${excludes[@]}"; do
+        find_command+=" -path \"*/$exclude/*\" -prune -o"
+    done
+    find_command+=" -type d -print"
+
+    # Only cd if a directory was selected
+    selected_dir=$(eval "$find_command" | fzf --height 69% --reverse --exact)
+    if [[ -n $selected_dir ]]; then
+        cd "$selected_dir" 
+    fi
+}
+
+function v() {
+    local selected_dir
+    local find_command="find ~/{projects,backups,dotfiles,.config} $HOME"
+    local excludes=(
+        "node_modules"
+        "Android"
+        "go"
+        "phone"
+        ".git"
+    )
+
+    for exclude in "${excludes[@]}"; do
+        find_command+=" -path \"*/$exclude/*\" -prune -o"
+    done
+    find_command+=" -type d -print"
+
+    # Only open nvim if a directory was selected
+    selected_dir=$(eval "$find_command" | fzf --height 69% --reverse --exact)
+    if [[ -n $selected_dir ]]; then
+        cd "$selected_dir" && nvim .
+    fi
+}
 
 alias ..='cd ..'
 alias ...='cd ../..'
