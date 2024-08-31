@@ -218,3 +218,6 @@ $ sudo nvim /var/lib/pgsql/data/pg_hba.conf
 
 //-- "md5" or better "scram-sha-256" encryption while  and restart the postgresql service 
 $ sudo systemctl restart postgresql
+
+# listing the binary of packages 
+rpm -ql <package-name> | grep '/bin/'

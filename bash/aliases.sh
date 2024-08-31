@@ -29,7 +29,7 @@ alias gemini='firefox https://gemini.google.com/ && disown'
 alias t='tmux'
 alias c='code'
 alias vi='nvim'
-alias s='scrcpy'
+alias s='scrcpy --no-audio'
 
 alias tput='trash-put'
 alias tls='trash-list'
