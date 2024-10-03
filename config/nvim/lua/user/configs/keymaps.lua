@@ -4,6 +4,7 @@ vim.g.maplocalleader = " "
 
 -- copy file content
 vim.keymap.set("n", "<leader><leader>", ":%y+<CR>")
+vim.keymap.set("n", "<C-a>", "ggVG")
 
 -- file indentation
 vim.keymap.set({"n", "v"}, "<leader>=", "gg=G``" )
