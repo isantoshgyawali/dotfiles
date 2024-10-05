@@ -29,7 +29,8 @@ return {
                 "lua_ls",
                 "gopls",
                 "tsserver",
-                "tailwindcss"
+                "tailwindcss",
+                "jsonls"
             },
             handlers = {
                 function(server_name) -- default handler (optional)

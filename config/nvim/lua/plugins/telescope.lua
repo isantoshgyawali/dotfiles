@@ -37,5 +37,6 @@ return {
         { '<leader>ff', function() require('telescope.builtin').find_files({hidden=true}) end },
         { '<leader>fg', function() require('telescope.builtin').live_grep() end },
         { '<leader>ft', function() require('telescope.builtin').git_files() end },
+        { '<leader>fr', function() require('telescope.builtin').registers() end },
     }
 }
