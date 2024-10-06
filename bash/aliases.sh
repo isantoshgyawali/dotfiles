@@ -190,6 +190,7 @@ alias lg='lazygit'
 #  others - generally project specific  |
 #---------------------------------------
 alias gor="go run ./cmd/main/main.go"
+alias gob="go build ./cmd/main/main.go"
 
 function cl(){
 	read -p "Enter port:" port
