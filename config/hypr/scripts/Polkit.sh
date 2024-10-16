@@ -1,6 +1,5 @@
 #!/bin/bash
 # This is for polkits, it will start from top and will stop if the top is executed
-
 # Polkit possible paths files to check
 polkit=(
   "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"

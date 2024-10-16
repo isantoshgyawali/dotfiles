@@ -1,3 +1,11 @@
+#-- checks if user's local binary directories ($HOME/.local/bin and $HOME/bin) are
+#-- added to the beginning of the PATH variable if they are not already included
+if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]
+then
+    PATH="$HOME/.local/bin:$HOME/bin:$PATH"
+fi
+export PATH
+
 #DEFAULT EDITOR
 export VISUAL=nvim;
 export EDITOR=nvim;
@@ -23,7 +31,12 @@ setopt hist_find_no_dups
 # --- prompt_config/UI ---
 prompt_counter=0
 set_prompt() {
-    local git_branch=$(git branch 2>/dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/')
+    local git_branch=""
+    if git rev-parse --is-inside-work-tree &>/dev/null; then
+        git_branch=$(git symbolic-ref --short HEAD 2>/dev/null)
+        git_branch=" ($git_branch)"
+    fi
+    # local git_branch=$(git branch 2>/dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/')
     if (( prompt_counter > 0 )); then
         # Print a vertical space after each prompt execution (except the first)
         echo -e "\r\e[K"
@@ -59,19 +72,24 @@ fi
 source "${ZINIT_HOME}/zinit.zsh"
 
 # Load completions
-autoload -Uz compinit && compinit
+autoload -Uz compinit
+for dump in ~/.zcompdump(N.mh+24); do
+  compinit
+done
+compinit -C
 
 # zsh-plugins
-zinit light zsh-users/zsh-syntax-highlighting
-zinit light zsh-users/zsh-completions
-zinit light zsh-users/zsh-autosuggestions
-zinit light Aloxaf/fzf-tab
+zinit wait lucid light-mode for \
+  atinit"zicompinit; zicdreplay" \
+      zdharma-continuum/fast-syntax-highlighting \
+  atload"_zsh_autosuggest_start" \
+      zsh-users/zsh-autosuggestions \
+  blockf atpull'zinit creinstall -q .' \
+      zsh-users/zsh-completions \
+  Aloxaf/fzf-tab
 
 # Completion styling
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 zstyle ':completion:*' menu yes
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
-
-# --- shell_integrations --- 
-eval "$(fzf --zsh)"
