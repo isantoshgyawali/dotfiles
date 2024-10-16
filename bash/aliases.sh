@@ -55,7 +55,7 @@ alias flf='du -shx -- * | sort -rh | head -10' #prints out the top 10 largest fi
 
 #directories def'n for prioritzation
 function o() {
-    local find_command="find ~/.bashrc ~/{projects,backups,dotfiles,.config} $HOME"
+    local find_command="find ~/.${SHELL##*/}rc ~/{projects,backups,dotfiles,.config} $HOME"
     local excludes=(
         "node_modules"
         "Android"
