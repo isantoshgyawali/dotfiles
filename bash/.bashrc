@@ -15,12 +15,13 @@ if [ -f /etc/bashrc ]; then
 	. /etc/bashrc
 fi
 
+source ~/.bash.env
 shopt -s histappend
-#HISTSIZE
+
+# HISTORY
 HISTSIZE=5000
 HISTFILESIZE=5000
 export HISTCONTROL=ignoredups:erasedups
-
 PROMPT_COMMAND='history -a'
 
 #DEFAULT EDITOR
@@ -31,36 +32,25 @@ export EDITOR=nvim;
 parse_git_branch() {
     git branch 2>/dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
 }
-PS1='\[\e[1;90m\]\w\[\e[1;97m\]$(parse_git_branch)\[\e[0m\]\n\[\e[38;5;10m\]$\[\e[0m\] '
-
-#-----------------------
-# PROMPT_VERTICAL_SPACE |
-# ----------------------
+PS1='\[\e[1;90m\]\w\[\e[1;97m\]$(parse_git_branch)\[\e[0m\]\n\[\e[38;5;33m\]❯\[\e[0m\] '
 prompt_counter=0
-#-- Reset the prompt_counter after clear
-alias clear='clear && prompt_counter=0'
-
 #-- whenever the prompt_counter is greater than 0 ie. 
 #-- if the prompt is not the first prompt it will print 
 #-- a vertical space is printed after each prompt execution
-#
-#-- "THIS IS A VERY SILLY ISSUE AND ASSUME 99.99% OF FOLKS DON'T NEED THIS"  
 PROMPT_COMMAND='if [ $prompt_counter -gt 0 ]; then echo -e "\r\e[K"; fi; ((prompt_counter++))'
+#-- Reset the prompt_counter after clear
+alias clear='clear && prompt_counter=0'
 
 export LS_COLORS='di=38;5;63:fi=38;5;245:ex=38;5;40'
 export LS_COLORS
-
 alias ls="ls --classify --color=auto"
 
-#CUSTOM_BASH_SCRIPTS_ITERATIONS
-source ~/.bash.env
-for file in ~/dotfiles/bash/*.sh; do 
-	[ -f "$file" ] && . "$file"
-done
+# --- bash_scripts & aliases ---
+backups="$HOME/backups/bash"
+dotfiles="$HOME/dotfiles/bash"
 
-for file in ~/backups/bash/*.sh; do 
-	[ -f "$file" ] && . "$file"
+for dir in "$backups" "$dotfiles"; do 
+    for file in "$dir"/*.sh; do
+        [ -f "$file" ] && . "$file"
+    done
 done
-
-# --- n : node-version-manager ---
-export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"

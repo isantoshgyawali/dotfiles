@@ -13,6 +13,9 @@ export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
 export ANDROID_HOME="$HOME/Android/Sdk"
 export PATH="$PATH:$ANDROID_HOME/platform-tools"
 
+# --- n : node-version-manager ---
+export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"
+
 #--- pnpm ---
 export PNPM_HOME="/home/cosnate/.local/share/pnpm"
 case ":$PATH:" in
