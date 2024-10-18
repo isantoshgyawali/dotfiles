@@ -36,4 +36,4 @@ vim.keymap.set({"n", "v"}, "<leader>y", "\"+y", {noremap = true})
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>")
 
 -- golang err
-vim.keymap.set("n", "<leader>r", "iif err != nil {\n\n}<Esc>2=kji<TAB>")
+vim.keymap.set("n", "<leader>r", "oif err != nil {\nreturn nil, \n}<Esc>2=kj$i<TAB>")
