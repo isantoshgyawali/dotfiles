@@ -20,7 +20,7 @@ function yt(){
 #-------------------
 alias la='ls -a'
 alias ll='ls -al --classify'
-alias sb='source ~/.bashrc && source ~/.bash_profile'
+alias sb='source $HOME/.${SHELL##*/}rc'
 alias upd='sudo dnf update --refresh && sudo dnf upgrade --refresh'
 alias gpt='firefox https://chat.openai.com & disown'
 alias bing='firefox --private-window https://www.bing.com/chat && disown'
@@ -55,7 +55,8 @@ alias flf='du -shx -- * | sort -rh | head -10' #prints out the top 10 largest fi
 
 #directories def'n for prioritzation
 function o() {
-    local find_command="find ~/.${SHELL##*/}rc ~/{projects,backups,dotfiles,.config} $HOME"
+    local firstPriority= $([ "$PWD" != "$HOME" ] && echo $CWD || echo "")
+    local find_command="find $HOME/.${SHELL##*/}rc ${firstPriority:+$firstPriority} $HOME/{projects,backups,dotfiles,.config} $HOME" 
     local excludes=(
         "node_modules"
         "Android"
@@ -74,7 +75,8 @@ function o() {
 
 function g() {
     local selected_dir
-    local find_command="find ~/{projects,backups,dotfiles,.config} $HOME"
+    local firstPriority=$([ "$PWD" != "$HOME" ] && echo "$PWD" || echo "")
+    local find_command="find ${firstPriority:+$firstPriority} $HOME/{projects,backups,dotfiles,.config} $HOME"
     local excludes=(
         "node_modules"
         "Android"
@@ -97,7 +99,8 @@ function g() {
 
 function v() {
     local selected_dir
-    local find_command="find ~/{projects,backups,dotfiles,.config} $HOME"
+    local firstPriority=$([ "$PWD" != "$HOME" ] && echo "$PWD" || echo "")
+    local find_command="find ${firstPriority:+$firstPriority} $HOME/{projects,backups,dotfiles,.config} $HOME"
     local excludes=(
         "node_modules"
         "Android"
