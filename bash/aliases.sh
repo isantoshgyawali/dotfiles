@@ -1,20 +1,3 @@
-#-- youtube search
-function yt(){
-	read -p "search: " search_query
-
-	#-- checking if the input is available
-	if [ -z "$search_query" ]; then
-		xdg-open "https://www.youtube.com/" > /dev/null 2>&1 & disown
-                return 1
-	fi
-
-  #-- sed checks the space and replace it with + globally
-  #-- and encoded query is constructed
-  encoded_query=$(echo "$search_query" | sed 's/ /+/g')
-  youtube_url="https://www.youtube.com/results?search_query=$encoded_query"
-  xdg-open "$youtube_url" > /dev/null 2>&1 & disown
-}
-
 #-------------------
 #  general_aliases  |
 #-------------------
@@ -58,19 +41,19 @@ function o() {
     local firstPriority= $([ "$PWD" != "$HOME" ] && echo $CWD || echo "")
     local find_command="find $HOME/.${SHELL##*/}rc ${firstPriority:+$firstPriority} $HOME/{projects,backups,dotfiles,.config} $HOME" 
     local excludes=(
-        "node_modules"
-        "Android"
-        "go"
-        "phone"
-        ".git"
-    )
+    "node_modules"
+    "Android"
+    "go"
+    "phone"
+    ".git"
+)
 
-    for exclude in "${excludes[@]}"; do
-        find_command+=" -path \"*/$exclude/*\" -prune -o"
-    done
-    find_command+=" -type f -print"
+for exclude in "${excludes[@]}"; do
+    find_command+=" -path \"*/$exclude/*\" -prune -o"
+done
+find_command+=" -type f -print"
 
-    eval "$find_command" | fzf --height 69% --reverse --exact --preview "bat --color always {}" | xargs -r nvim
+eval "$find_command" | fzf --height 69% --reverse --exact --preview "bat --color always {}" | xargs -r nvim
 }
 
 function g() {
@@ -78,17 +61,17 @@ function g() {
     local firstPriority=$([ "$PWD" != "$HOME" ] && echo "$PWD" || echo "")
     local find_command="find ${firstPriority:+$firstPriority} $HOME/{projects,backups,dotfiles,.config} $HOME"
     local excludes=(
-        "node_modules"
-        "Android"
-        "go"
-        "phone"
-        ".git"
-    )
+    "node_modules"
+    "Android"
+    "go"
+    "phone"
+    ".git"
+)
 
-    for exclude in "${excludes[@]}"; do
-        find_command+=" -path \"*/$exclude/*\" -prune -o"
-    done
-    find_command+=" -type d -print"
+for exclude in "${excludes[@]}"; do
+    find_command+=" -path \"*/$exclude/*\" -prune -o"
+done
+find_command+=" -type d -print"
 
     # Only cd if a directory was selected
     selected_dir=$(eval "$find_command" | fzf --height 69% --reverse --exact)
@@ -102,17 +85,17 @@ function v() {
     local firstPriority=$([ "$PWD" != "$HOME" ] && echo "$PWD" || echo "")
     local find_command="find ${firstPriority:+$firstPriority} $HOME/{projects,backups,dotfiles,.config} $HOME"
     local excludes=(
-        "node_modules"
-        "Android"
-        "go"
-        "phone"
-        ".git"
-    )
+    "node_modules"
+    "Android"
+    "go"
+    "phone"
+    ".git"
+)
 
-    for exclude in "${excludes[@]}"; do
-        find_command+=" -path \"*/$exclude/*\" -prune -o"
-    done
-    find_command+=" -type d -print"
+for exclude in "${excludes[@]}"; do
+    find_command+=" -path \"*/$exclude/*\" -prune -o"
+done
+find_command+=" -type d -print"
 
     # Only open nvim if a directory was selected
     selected_dir=$(eval "$find_command" | fzf --height 69% --reverse --exact)
@@ -125,7 +108,7 @@ alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
 
-alias hf='cmd=$(history | fzf --reverse --height 50% --exact | sed "s/^[ ]*[0-9]*[ ]*//");history -s "$cmd"; echo $cmd; eval "$cmd"'
+alias hf='cmd=$(history | fzf --reverse --height 50% --exact | sed "s/^[ ]*[0-9]*[ ]*//"); if [ -n "$BASH_VERSION" ]; then history -s "$cmd"; elif [ -n "$ZSH_VERSION" ]; then print -s "$cmd"; fi; echo "$cmd"; eval "$cmd"'
 
 #-------------------
 #  System Aliases   |
@@ -138,22 +121,28 @@ alias bto='rfkill unblock bluetooth && bluetoothctl power on && bluetoothctl con
 alias btc='bluetoothctl power off && rfkill block bluetooth'
 
 function pk(){
-#-- get the PID of the selected process
-selected_pid=$(ps aux | fzf --multi --header='[Use Tab to select multiple processes]' --reverse --height 70% | awk '{print $2}')
+    #-- get the PID of the selected process
+    selected_pid=$(ps aux | fzf --multi --header='[Use Tab to select multiple processes]' --reverse --height 70% | awk '{ print $2 }' | tr '\n' ' ' | sed 's/ $//')
 
-#-- checks if a PID is selected
-if [ -n "$selected_pid" ]; then
-  read -p "Are you sure you want to kill the selected process (PID: $selected_pid)? (y/n): " confirmation
+    #-- checks if a PID is selected
+    if [ -n "$selected_pid" ]; then
+        if [ -n "$ZSH_VERSION" ]; then
+            read "confirmation?Are you sure you want to kill the selected process(es) (PIDs: $selected_pid)? (y/n): "
+        else
+            read -p "Are you sure you want to kill the selected process(es) (PIDs: $selected_pid)? (y/n): " confirmation
+        fi
 
-  if [ "$confirmation" == "y" ]; then
-    kill -9 $selected_pid
-    echo "Process (PID: $selected_pid) killed."
-  else
-    echo "Process not killed."
-  fi
-else
-  echo "No process selected."
-fi
+        if [ "$confirmation" = "y" ]; then
+            for pid in ${=selected_pid}; do
+                kill -9 $pid
+            done
+            echo "Process (PID: $selected_pid) killed."
+        else
+            echo "Process not killed."
+        fi
+    else
+        echo "No process selected."
+    fi
 }
 
 #BACKLIGHT 
@@ -195,12 +184,15 @@ alias lg='lazygit'
 alias gor="go run ./cmd/main/main.go"
 alias gob="go build ./cmd/main/main.go"
 
-function cl(){
-	read -p "Enter port:" port
-	read -p "path:" path
-
-	#-- if the port is empty assign the default value 8081 and if not then uses the $port
-	#-- checks if the path is empty and if not then adds the $path else leave it
-	url="localhost:${port:=8080}/${path:+$path/}"
-	curl "$url"
+function cl() {
+    if [ -n "$ZSH_VERSION" ]; then
+        read "port?Enter port: "
+        read "route?route: "
+    else
+        read -p "Enter port: " port
+        read -p "route: " route
+    fi
+    
+    url="localhost:${port:=8080}/${route:+$route/}"
+    curl "$url"
 }
