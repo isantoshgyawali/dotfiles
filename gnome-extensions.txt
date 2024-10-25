@@ -1,0 +1,11 @@
+auto-move-windows@gnome-shell-extensions.gcampax.github.com/
+blur-my-shell@aunetx/
+burn-my-windows@schneegans.github.com/
+compiz-windows-effect@hermes83.github.com/
+dash-to-dock@micxgx.gmail.com/
+gnome-compact-top-bar@metehan-arslan.github.io/
+impatience@gfxmonk.net/
+tophat@fflewddur.github.io/
+unblank@sun.wxg@gmail.com/
+unlockDialogBackground@sun.wxg@gmail.com/
+user-theme@gnome-shell-extensions.gcampax.github.com/
