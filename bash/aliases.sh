@@ -5,31 +5,27 @@ alias la='ls -a'
 alias ll='ls -al --classify'
 alias sb='source $HOME/.${SHELL##*/}rc'
 alias upd='sudo dnf update --refresh && sudo dnf upgrade --refresh'
-alias gpt='firefox https://chat.openai.com & disown'
-alias bing='firefox --private-window https://www.bing.com/chat && disown'
-alias gemini='firefox https://gemini.google.com/ && disown'
+alias pwc='pwd | wl-copy'
+alias open='xdg-open'
+alias e='exit'
 
 alias t='tmux'
 alias c='code'
 alias vi='nvim'
 alias s='scrcpy --no-audio'
+alias gpt='firefox https://chat.openai.com & disown'
+alias bing='firefox --private-window https://www.bing.com/chat && disown'
 
-alias tput='trash-put'
-alias tls='trash-list'
-alias tres='trash-restore'
 alias y='yazi'
-alias snake='nsnake'
 alias top='btop'
+alias tls='trash-list'
+alias tput='trash-put'
+alias tres='trash-restore'
+alias snake='nsnake'
 alias ttype='ttyper -w 30'
-
-alias e='exit'
 
 alias key='cat $HOME/key.txt | wl-copy'
 alias fcp='cat $(find ~/{projects,backups,dotfiles,.config} $HOME -type f| fzf --height 69% --exact --reverse --preview "bat --color always {}") | wl-copy'
-
-alias pwc='pwd | wl-copy'
-
-alias vne='source ./myenv/bin/activate'
 
 #-----------
 # dir/files |
@@ -181,6 +177,7 @@ alias lg='lazygit'
 #---------------------------------------
 #  others - generally project specific  |
 #---------------------------------------
+alias vne='source ./myenv/bin/activate'
 alias gor="go run ./cmd/main/main.go"
 alias gob="go build ./cmd/main/main.go"
 
