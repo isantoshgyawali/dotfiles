@@ -47,6 +47,10 @@ case "$1" in
 	"--dec")
 		change_backlight "5%-"
 		;;
+        "--one")
+                change_backlight "1"
+                ;;
+
 	*)
 		get_backlight
 		;;
