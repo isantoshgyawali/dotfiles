@@ -3,7 +3,7 @@ font-family: "JetBrainsMono Nerd Font";
 font-weight: 500;
 min-height: 0;
 /* set font-size to 100% if font scaling is set to 1.00 using nwg-look */
-font-size: 97%;
+font-size: 98%;
 font-feature-settings: '"zero", "ss01", "ss02", "ss03", "ss04", "ss05", "cv31"';
 }
 
@@ -61,7 +61,7 @@ tooltip label{
 /*-----modules indv----*/
 #workspaces button {
     color: white;
-    border-radius: 1px;
+    /* border-radius: 1px; */
     padding: 5px 5px;
     margin-right: 4px;
 }
@@ -71,12 +71,12 @@ tooltip label{
 }
 
 #workspaces button.active {
-	background: royalblue;
+	background: #6a994e ;
 	color: white;
 }
 
 #workspaces button.persistent {
-	border-radius: 5px;
+	border-radius: 0px;
 }
 
 #backlight,

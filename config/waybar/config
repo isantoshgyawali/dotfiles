@@ -8,12 +8,9 @@
 "spacing": 10,
 "fixed-center": true,
 "ipc": true,
-"margin-top": 5,
-"margin-left": 10,
-"margin-right": 10,
 
 "modules-left": [
-	"custom/menu",
+	//"custom/menu",
 	"hyprland/workspaces#kanji",
 	"wlr/taskbar",
 ],
@@ -24,8 +21,6 @@
 
 "modules-right": [
 	"group/motherboard",
-	"custom/separator#line",
-	"group/laptop",
 	"custom/separator#line",
 	"tray",
 	"custom/separator#line",
