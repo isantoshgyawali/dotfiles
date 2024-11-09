@@ -9,7 +9,7 @@ font-feature-settings: '"zero", "ss01", "ss02", "ss03", "ss04", "ss05", "cv31"';
 
 window#waybar {
 	background: rgba(0, 0, 0, 0.3);
-	border-radius: 0.5rem;
+	/* border-radius: 0.5rem; */
 }
 
 window#waybar.empty {
@@ -60,20 +60,20 @@ tooltip label{
 }
 /*-----modules indv----*/
 #workspaces button {
-    color: white;
-    /* border-radius: 1px; */
+    color: whitesmoke;
     padding: 5px 5px;
     margin-right: 4px;
+}
+#workspaces button.active {
+	background: #3a7d44;
+        font-weight: 900;
+	color: whitesmoke;
 }
 #workspaces button:hover {
     color: grey;
     transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
 }
 
-#workspaces button.active {
-	background: #6a994e ;
-	color: white;
-}
 
 #workspaces button.persistent {
 	border-radius: 0px;
