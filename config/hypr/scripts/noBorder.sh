@@ -8,4 +8,3 @@ if [ "$a" -gt 1 ]; then
     hyprctl keyword general:border_size 0
     hyprctl --batch 'keyword general:gaps_in 0; keyword general:gaps_out 0; keyword decoration:rounding 0'
 fi
-

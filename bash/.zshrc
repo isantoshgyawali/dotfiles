@@ -36,13 +36,18 @@ set_prompt() {
         git_branch=$(git symbolic-ref --short HEAD 2>/dev/null)
         git_branch=" ($git_branch)"
     fi
+
+    # Add the virtual environment name if active
+    if [[ -n "$VIRTUAL_ENV" ]]; then
+        venv="($(basename $VIRTUAL_ENV)) "
+    fi
+
     # local git_branch=$(git branch 2>/dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/')
     if (( prompt_counter > 0 )); then
         # Print a vertical space after each prompt execution (except the first)
         echo -e "\r\e[K"
     fi
-
-    PROMPT='%F{8}%~%f'${git_branch}$'\n''%F{33}❯%f '
+    PROMPT='%F{8}%~%f '${venv}${git_branch}$'\n''%F{33}❯%f '
     ((prompt_counter++))
 }
 precmd() { set_prompt }
