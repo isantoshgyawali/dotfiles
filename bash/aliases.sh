@@ -157,7 +157,7 @@ alias gc='git commit -m'
 alias gs='git status --short'
 alias gd='git diff'
 
-alias gu='git reset --soft HEAD~1'
+alias gu='git reset --soft HEAD~1 && git restore --staged .'
 
 alias gco='git checkout'
 alias gcob='git checkout -b'
@@ -177,7 +177,7 @@ alias lg='lazygit'
 #---------------------------------------
 #  others - generally project specific  |
 #---------------------------------------
-alias vne='source ./myenv/bin/activate'
+alias vne='source $HOME/projects/ps/myenv/bin/activate'
 alias gor="go run ./cmd/main/main.go"
 alias gob="go build ./cmd/main/main.go"
 

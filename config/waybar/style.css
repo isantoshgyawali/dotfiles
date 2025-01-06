@@ -45,11 +45,7 @@ tooltip label{
 }
 .modules-center {
 	color: white;
-	border-radius: 10px;
-	padding-top: 2px;
-	padding-bottom: 2px;
-	padding-right: 4px;
-	padding-left: 4px;
+	border-radius: 5px;
 }
 .modules-left {
 	color: white;
@@ -65,7 +61,7 @@ tooltip label{
     margin-right: 4px;
 }
 #workspaces button.active {
-	background: #3a7d44;
+	background: #6a994e;
         font-weight: 900;
 	color: whitesmoke;
 }
