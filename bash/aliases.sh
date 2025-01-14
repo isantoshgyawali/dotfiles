@@ -113,6 +113,9 @@ alias shut='systemctl poweroff'
 alias reo='systemctl reboot' 
 alias px='ps aux | fzf'
 
+aliaas spq='sudo systemctl start postgresql'
+aliaas rpq='sudo systemctl restart postgresql'
+
 alias bto='rfkill unblock bluetooth && bluetoothctl power on && bluetoothctl connect 11:F5:BD:C2:3C:D4'
 alias btc='bluetoothctl power off && rfkill block bluetooth'
 
