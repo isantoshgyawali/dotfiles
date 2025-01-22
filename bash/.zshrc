@@ -16,7 +16,7 @@ bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
 
 # History
-HISTSIZE=5000
+HISTSIZE=3000
 HISTFILE=~/.zsh_history
 SAVEHIST=$HISTSIZE
 HISTDUP=erase
@@ -85,13 +85,16 @@ compinit -C
 
 # zsh-plugins
 zinit wait lucid light-mode for \
-  atinit"zicompinit; zicdreplay" \
-      zdharma-continuum/fast-syntax-highlighting \
   atload"_zsh_autosuggest_start" \
       zsh-users/zsh-autosuggestions \
+  atinit"zicompinit; zicdreplay" \
+      zdharma-continuum/fast-syntax-highlighting \
   blockf atpull'zinit creinstall -q .' \
       zsh-users/zsh-completions \
   Aloxaf/fzf-tab
+
+# double-tab to auto-complete inline-suggestion
+bindkey '^I^I' autosuggest-accept
 
 # Completion styling
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
