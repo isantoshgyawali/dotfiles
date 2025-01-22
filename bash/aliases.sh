@@ -104,7 +104,7 @@ alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
 
-alias hf='cmd=$(history | fzf --reverse --height 50% --exact | sed "s/^[ ]*[0-9]*[ ]*//"); if [ -n "$BASH_VERSION" ]; then history -s "$cmd"; elif [ -n "$ZSH_VERSION" ]; then print -s "$cmd"; fi; echo "$cmd"; eval "$cmd"'
+alias hf='cmd=$(fc -rl 1 | fzf --reverse --height 50% --exact | sed "s/^[ ]*[0-9]*[ ]*//"); if [ -n "$BASH_VERSION" ]; then history -s "$cmd"; elif [ -n "$ZSH_VERSION" ]; then print -s "$cmd"; fi; echo "$cmd"; eval "$cmd"'
 
 #-------------------
 #  System Aliases   |
