@@ -116,7 +116,7 @@ alias px='ps aux | fzf'
 alias spq='sudo systemctl start postgresql'
 alias rpq='sudo systemctl restart postgresql'
 
-alias bto='bluetoothctl power on && bluetoothctl connect 11:F5:BD:C2:3C:D4'
+alias bto='rfkill unblock bluetooth && bluetoothctl power on && bluetoothctl connect 11:F5:BD:C2:3C:D4'
 alias btc='bluetoothctl power off' 
 
 function pk(){
