@@ -34,7 +34,7 @@ alias flf='du -shx -- * | sort -rh | head -10' #prints out the top 10 largest fi
 
 #directories def'n for prioritzation
 function o() {
-    local firstPriority= $([ "$PWD" != "$HOME" ] && echo $CWD || echo "")
+    local firstPriority=$([ "$PWD" != "$HOME" ] && echo "$PWD" || echo "")
     local find_command="find $HOME/.${SHELL##*/}rc ${firstPriority:+$firstPriority} $HOME/{projects,backups,dotfiles,.config} $HOME" 
     local excludes=(
     "node_modules"

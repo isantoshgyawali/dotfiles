@@ -6,12 +6,21 @@ vim.g.maplocalleader = " "
 vim.keymap.set("n", "<leader><leader>", ":%y+<CR>")
 vim.keymap.set("n", "<C-a>", "ggVG")
 
--- file indentation
-vim.keymap.set({"n", "v"}, "<leader>=", "gg=G``" )
+vim.keymap.set({"n", "v"}, "<leader>=", function()
+   -- If LSP is available, use LSP formatting
+   if vim.lsp.buf.format then
+      print("Using LSP formatting")
+      vim.lsp.buf.format()
+   else
+      -- If LSP is not available, fall back to indentation
+      print("Falling back to indentation")
+      vim.cmd("normal! gg=G``")
+   end
+end, { desc = "Format buffer" })
 
 -- buffer movement
-vim.keymap.set("n", "<Tab>", ":bnext<CR>", {noremap=true})
-vim.keymap.set("n", "<S-Tab>", ":bprev<CR>", {noremap=true})
+vim.keymap.set("n", "<Tab>", ":bnext<CR>", { noremap = true })
+vim.keymap.set("n", "<S-Tab>", ":bprev<CR>", { noremap = true })
 
 --ThePrimeagen/References:
 --move selection
@@ -30,7 +39,7 @@ vim.keymap.set("n", "N", "Nzzzv")
 vim.keymap.set("x", "<leader>p", "\"_dp")
 
 --yanking to sys clipboard
-vim.keymap.set({"n", "v"}, "<leader>y", "\"+y", {noremap = true})
+vim.keymap.set({ "n", "v" }, "<leader>y", "\"+y", { noremap = true })
 
 --chmod +x execution right from the vim
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>")
