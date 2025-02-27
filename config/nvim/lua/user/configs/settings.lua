@@ -3,8 +3,8 @@ vim.g.loaded_netrwPlugin = 1
 
 -- options 
 -- Tabs and Indentation
-vim.o.shiftwidth = 3
-vim.o.softtabstop = 3
+vim.o.shiftwidth = 4
+vim.o.softtabstop = 4
 vim.o.expandtab = true
 vim.o.smartindent = true
 vim.o.wrap = false
