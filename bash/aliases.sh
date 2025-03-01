@@ -24,7 +24,6 @@ alias tres='trash-restore'
 alias snake='nsnake'
 alias ttype='ttyper -w 30'
 
-alias key='cat $HOME/key.txt | wl-copy'
 alias fcp='cat $(find ~/{projects,backups,dotfiles,.config} $HOME -type f| fzf --height 69% --exact --reverse --preview "bat --color always {}") | wl-copy'
 
 #-----------
@@ -171,9 +170,9 @@ alias gba='git branch -avv'
 alias gl='git log'
 alias gla="git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)' --all"
 alias glf='git log -n 5 --decorate --oneline --graph'
-alias gcl='key && git clone'
-alias gpl='key && git pull'
-alias gp='key && git push'
+alias gcl='git clone'
+alias gpl='git pull'
+alias gp='git push'
 
 alias lg='lazygit'
 
