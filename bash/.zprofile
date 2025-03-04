@@ -2,12 +2,16 @@
 #------------------------
 # ENVIROMENT - VARIABLES |
 #------------------------
+# --- dotfiles binary ---
+export PATH="$HOME/dotfiles/bin:$PATH"
+
 # --- cargo && go ---
 export PATH="$HOME/.cargo/bin:$PATH"
 
-export GOROOT=/usr/local/go
-export GOPATH=$HOME/go
-export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
+#--- gvm : go-version manager ---
+[[ -s "/home/cosnate/.gvm/scripts/gvm" ]] && source "/home/cosnate/.gvm/scripts/gvm"
+unset -f cd
+export PATH="$HOME/go/bin:$PATH"
 
 # --- androidStudio ---
 export ANDROID_HOME="$HOME/Android/Sdk"

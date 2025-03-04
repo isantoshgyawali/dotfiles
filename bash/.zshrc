@@ -69,8 +69,8 @@ done
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 # Download Zinit, if it's not there yet
 if [ ! -d "$ZINIT_HOME" ]; then
-   mkdir -p "$(dirname $ZINIT_HOME)"
-   git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
+    mkdir -p "$(dirname $ZINIT_HOME)"
+    git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
 fi
 
 # Source/Load zinit
@@ -79,19 +79,19 @@ source "${ZINIT_HOME}/zinit.zsh"
 # Load completions
 autoload -Uz compinit
 for dump in ~/.zcompdump(N.mh+24); do
-  compinit
+    compinit
 done
 compinit -C
 
 # zsh-plugins
 zinit wait lucid light-mode for \
-  atload"_zsh_autosuggest_start" \
-      zsh-users/zsh-autosuggestions \
-  atinit"zicompinit; zicdreplay" \
-      zdharma-continuum/fast-syntax-highlighting \
-  blockf atpull'zinit creinstall -q .' \
-      zsh-users/zsh-completions \
-  Aloxaf/fzf-tab
+    atload"_zsh_autosuggest_start" \
+    zsh-users/zsh-autosuggestions \
+    atinit"zicompinit; zicdreplay" \
+    zdharma-continuum/fast-syntax-highlighting \
+    blockf atpull'zinit creinstall -q .' \
+    zsh-users/zsh-completions \
+    Aloxaf/fzf-tab
 
 # double-tab to auto-complete inline-suggestion
 bindkey '^I^I' autosuggest-accept

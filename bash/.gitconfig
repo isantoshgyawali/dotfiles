@@ -1,0 +1,7 @@
+[user]
+	email = isantoshgyawali@gmail.com
+	name = Santosh Gyawali
+[init]
+	defaultBranch = master
+[credential]
+	helper = store
