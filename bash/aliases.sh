@@ -152,7 +152,13 @@ alias phone="sshfs -p 8022 $DEV:/storage/emulated/0/ ~/phone/"
 #-------------
 #  git_quick  |
 #-------------
-alias isan='xdg-open https://github.com/isantoshgyawali/ & disown'
+function isan(){
+    if [ -n "$1" ]; then
+        xdg-open https://github.com/isantoshgyawali/$1 & disown
+    else
+        xdg-open https://github.com/isantoshgyawali/ & disown
+    fi
+}
 alias ga='git add .'
 alias gac='git add . && git commit -m'
 alias gc='git commit -m'
@@ -191,7 +197,7 @@ function cl() {
         read -p "Enter port: " port
         read -p "route: " route
     fi
-    
+
     url="localhost:${port:=8080}/${route:+$route/}"
     curl "$url"
 }
