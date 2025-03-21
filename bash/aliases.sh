@@ -3,7 +3,7 @@
 #-------------------
 alias la='ls -a'
 alias ll='ls -al --classify'
-alias sb='source $HOME/.${SHELL##*/}rc'
+alias sb='source $ZDOTDIR/.zshrc $HOME/.zprofile'
 alias upd='sudo dnf update --refresh && sudo dnf upgrade --refresh'
 alias pwc='pwd | wl-copy'
 alias open='xdg-open'
@@ -34,7 +34,7 @@ alias flf='du -shx -- * | sort -rh | head -10' #prints out the top 10 largest fi
 #directories def'n for prioritzation
 function o() {
     local firstPriority=$([ "$PWD" != "$HOME" ] && echo "$PWD" || echo "")
-    local find_command="find $HOME/.${SHELL##*/}rc ${firstPriority:+$firstPriority} $HOME/{projects,backups,dotfiles,.config} $HOME" 
+    local find_command="find $ZDOTDIR/.zshrc ${firstPriority:+$firstPriority} $HOME/{projects,backups,dotfiles,.config} $HOME" 
     local excludes=(
     "node_modules"
     "Android"
