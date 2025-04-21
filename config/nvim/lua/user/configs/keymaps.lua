@@ -52,3 +52,7 @@ vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>")
 
 -- golang err
 vim.keymap.set("n", "<leader>r", "oif err != nil {\nreturn nil, \n}<Esc>2=kj$i<TAB>")
+
+-- react / react-native useEffect
+vim.keymap.set("n", "<leader>us", "o\nuseEffect(() => {\n}, [])<Esc>=kj0f]i")
+vim.keymap.set("n", "<leader>nv", "o\nconst navigation = useNavigation() \n useEffect(() => {\n navigation.setOptions({\n})\n}, [navigation])<Esc>3=kjo")
