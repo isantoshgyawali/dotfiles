@@ -1,27 +1,28 @@
 --leader key
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
+vim.keymap.set("n", "<leader>l", ":LspRestart<CR>")
 
 -- copy file content
 vim.keymap.set("n", "<leader><leader>", ":%y+<CR>")
 vim.keymap.set("n", "<C-a>", "ggVG")
 
 vim.keymap.set("n", "<leader>=", function()
-   -- checks if there are  any of lsp's in current buffer ie. {buffnr = 0}
-   -- "#" calculates the length of array and if that is more than 0
-   -- then has_lsp = true else false
-   local has_lsp = #vim.lsp.get_active_clients({ bufnr = 0 }) > 0
+    -- checks if there are  any of lsp's in current buffer ie. {buffnr = 0}
+    -- "#" calculates the length of array and if that is more than 0
+    -- then has_lsp = true else false
+    local has_lsp = #vim.lsp.get_active_clients({ bufnr = 0 }) > 0
 
-   -- If LSP is available, use LSP formatting
-   if has_lsp then
-      print("Using LSP formatting")
-      vim.lsp.buf.format()
-   else
-      -- If LSP is not available, fall back to indentation
-      local line_count = vim.api.nvim_buf_line_count(0)
-      vim.cmd("silent normal! gg=G``")
-      print("Falling back to indentation - " .. line_count .. " lines indented")
-   end
+    -- If LSP is available, use LSP formatting
+    if has_lsp then
+        print("Using LSP formatting")
+        vim.lsp.buf.format()
+    else
+        -- If LSP is not available, fall back to indentation
+        local line_count = vim.api.nvim_buf_line_count(0)
+        vim.cmd("silent normal! gg=G``")
+        print("Falling back to indentation - " .. line_count .. " lines indented")
+    end
 end, { desc = "Format buffer" })
 
 -- buffer movement
@@ -54,5 +55,6 @@ vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>")
 vim.keymap.set("n", "<leader>r", "oif err != nil {\nreturn nil, \n}<Esc>2=kj$i<TAB>")
 
 -- react / react-native useEffect
-vim.keymap.set("n", "<leader>us", "o\nuseEffect(() => {\n}, [])<Esc>=kj0f]i")
-vim.keymap.set("n", "<leader>nv", "o\nconst navigation = useNavigation() \n useEffect(() => {\n navigation.setOptions({\n})\n}, [navigation])<Esc>3=kjo")
+vim.keymap.set("n", "<leader>us", "ouseEffect(() => {\n}, [])<Esc>=kj0f]i")
+vim.keymap.set("n", "<leader>nv",
+    "oconst navigation = useNavigation() \n useEffect(() => {\n navigation.setOptions({\n})\n}, [navigation])<Esc>3=kjo")

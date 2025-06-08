@@ -8,6 +8,7 @@ alias upd='sudo dnf update --refresh && sudo dnf upgrade --refresh'
 alias pwc='pwd | wl-copy'
 alias open='xdg-open'
 alias e='exit'
+alias key='cat ~/key | wl-copy'
 
 alias t='tmux'
 alias c='code'
