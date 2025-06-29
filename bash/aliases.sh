@@ -3,7 +3,7 @@
 #-------------------
 alias la='ls -a'
 alias ll='ls -al --classify'
-alias sb='source $ZDOTDIR/.zshrc $HOME/.zprofile'
+alias sb='source $ZDOTDIR/.zshrc $ZDOTDIR/.zprofile'
 alias upd='sudo dnf update --refresh && sudo dnf upgrade --refresh'
 alias pwc='pwd | wl-copy'
 alias open='xdg-open'

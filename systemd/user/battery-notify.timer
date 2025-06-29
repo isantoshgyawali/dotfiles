@@ -1,0 +1,11 @@
+[Unit]
+Description=Run batter-notify.sh every 2 minutes
+
+[Timer]
+OnBootSec=1min
+OnUnitActiveSec=2min
+Unit=battery-notify.service
+
+[Install]
+WantedBy=timers.target
+

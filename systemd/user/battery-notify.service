@@ -1,0 +1,6 @@
+[Unit]
+Description=Battery notification script
+
+[Service]
+Type=oneshot
+ExecStart=%h/dotfiles/bin/battery_notify.sh
