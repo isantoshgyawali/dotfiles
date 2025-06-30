@@ -37,19 +37,20 @@ function o() {
     local firstPriority=$([ "$PWD" != "$HOME" ] && echo "$PWD" || echo "")
     local find_command="find $ZDOTDIR/.zshrc ${firstPriority:+$firstPriority} $HOME/{projects,backups,dotfiles,.config} $HOME" 
     local excludes=(
-    "node_modules"
-    "Android"
-    "go"
-    "phone"
-    ".git"
-)
+        "node_modules"
+        "Android"
+        "go"
+        "phone"
+        ".git"
+        ".local/share/waydroid"
+    )
 
-for exclude in "${excludes[@]}"; do
-    find_command+=" -path \"*/$exclude/*\" -prune -o"
-done
-find_command+=" -type f -print"
+    for exclude in "${excludes[@]}"; do
+        find_command+=" -path \"*/$exclude/*\" -prune -o"
+    done
+    find_command+=" -type f -print"
 
-eval "$find_command" | fzf --height 69% --reverse --exact --preview "bat --color always {}" | xargs -r nvim
+    eval "$find_command" | fzf --height 69% --reverse --exact --preview "bat --color always {}" | xargs -r nvim
 }
 
 function g() {
@@ -57,17 +58,18 @@ function g() {
     local firstPriority=$([ "$PWD" != "$HOME" ] && echo "$PWD" || echo "")
     local find_command="find ${firstPriority:+$firstPriority} $HOME/{projects,backups,dotfiles,.config} $HOME"
     local excludes=(
-    "node_modules"
-    "Android"
-    "go"
-    "phone"
-    ".git"
-)
+        "node_modules"
+        "Android"
+        "go"
+        "phone"
+        ".git"
+        ".local/share/waydroid"
+    )
 
-for exclude in "${excludes[@]}"; do
-    find_command+=" -path \"*/$exclude/*\" -prune -o"
-done
-find_command+=" -type d -print"
+    for exclude in "${excludes[@]}"; do
+        find_command+=" -path \"*/$exclude/*\" -prune -o"
+    done
+    find_command+=" -type d -print"
 
     # Only cd if a directory was selected
     selected_dir=$(eval "$find_command" | fzf --height 69% --reverse --exact)
@@ -81,17 +83,18 @@ function v() {
     local firstPriority=$([ "$PWD" != "$HOME" ] && echo "$PWD" || echo "")
     local find_command="find ${firstPriority:+$firstPriority} $HOME/{projects,backups,dotfiles,.config} $HOME"
     local excludes=(
-    "node_modules"
-    "Android"
-    "go"
-    "phone"
-    ".git"
-)
+        "node_modules"
+        "Android"
+        "go"
+        "phone"
+        ".git"
+        ".local/share/waydroid"
+    )
 
-for exclude in "${excludes[@]}"; do
-    find_command+=" -path \"*/$exclude/*\" -prune -o"
-done
-find_command+=" -type d -print"
+    for exclude in "${excludes[@]}"; do
+        find_command+=" -path \"*/$exclude/*\" -prune -o"
+    done
+    find_command+=" -type d -print"
 
     # Only open nvim if a directory was selected
     selected_dir=$(eval "$find_command" | fzf --height 69% --reverse --exact)
