@@ -17,7 +17,7 @@ if [[ "$BATTERY_PERCENT" -le 20 && "$LAST_LEVEL" -gt 20 ]]; then
     notify-send -u normal -t 3000 "⚠️ Battery Low" "Battery is at $BATTERY_PERCENT%"
 elif [[ "$BATTERY_PERCENT" -le 10 && "$LAST_LEVEL" -gt 10 ]]; then
     notify-send -u normal -t 3000 "🔥 Battery Critical" "Battery is at $BATTERY_PERCENT%"
-elif [[ "$BATTERY_PERCENT" -ge 80 && "$LAST_LEVEL" -le 80 ]]; then
+elif [[ "$BATTERY_PERCENT" -gt 80 && "$LAST_LEVEL" -le 80 ]]; then
     notify-send -u normal -t 3000 "✅ Battery Charged" "Battery reached $BATTERY_PERCENT%"
 
     if [[ -w "/sys/class/power_supply/BAT0/charge_control_end_threshold" ]]; then
