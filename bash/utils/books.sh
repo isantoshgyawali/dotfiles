@@ -25,14 +25,15 @@ function extract_images() {
         base_name=$(basename "$pdf" .pdf)
         output_cover_image="$output_dir/$base_name"
 
-        pdfimages -f 1 -l 1 \
+        pdftoppm -f 1 -l 1 \
             "$pdf" \
             "$output_cover_image"
         done 
-}
+    }
 
 function select_book() {
-    image_name=$(sxiv -to $output_dir | awk -F'/' '{print $NF}' | sed 's/-000\.ppm$//')
+    image_name=$(sxiv -to $output_dir | awk -F'/' '{print $NF}' | sed 's/-[0-9]*\.ppm$//')
+    echo $image_name
 
     for pdf in "$books_dir"*.pdf; do 
         base_name=$(basename "$pdf" .pdf)
@@ -44,8 +45,8 @@ function select_book() {
 }
 
 function main() {
-        mkdir -p $output_dir
-        extract_images
-        select_book
+    mkdir -p $output_dir
+    extract_images
+    select_book
 }
 main;
