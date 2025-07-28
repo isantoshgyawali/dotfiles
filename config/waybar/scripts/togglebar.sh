@@ -6,7 +6,6 @@ then
     killall nm-applet
     killall blueman-applet
     killall blueman-tray
-    killall protonvpn-app
 else
     waybar & 
     sleep 1
