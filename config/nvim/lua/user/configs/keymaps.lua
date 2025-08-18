@@ -50,12 +50,3 @@ vim.keymap.set({ "n", "v" }, "<leader>y", "\"+y", { noremap = true })
 
 --chmod +x execution right from the vim
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>")
-
--- golang err
-vim.keymap.set("n", "<leader>r", "oif err != nil {\nreturn nil, \n}<Esc>2=kj$i<TAB>")
-
--- react / react-native
-vim.keymap.set("n", "<leader>js", "oconsole.log(JSON.stringify( , null, 2))<Esc>F(la")
-vim.keymap.set("n", "<leader>us", "ouseEffect(() => {\n}, [])<Esc>=kj0f]i")
-vim.keymap.set("n", "<leader>nv",
-    "oconst navigation = useNavigation() \n useEffect(() => {\n navigation.setOptions({\n})\n}, [navigation])<Esc>3=kjo")

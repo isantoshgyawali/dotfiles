@@ -15,6 +15,79 @@ return {
     },
 
     config = function()
+        -- why tf I didn't used it before
+        local ls = require('luasnip')
+        local snippet = ls.snippet
+        local text = ls.text_node
+        local insert = ls.insert_node
+        local fmt = require("luasnip.extras.fmt").fmt
+
+        -- javascipt / typescript snippets
+        local jsTsFileType = { "javascript", "typescript", "javascriptreact", "typescriptreact" }
+        for _, ft in pairs(jsTsFileType) do
+            ls.add_snippets(ft, {
+                snippet("js", {
+                    text('console.log(JSON.stringify('),
+                    insert(1, "items"),
+                    text(', null, 2))')
+                })
+            })
+
+            ls.add_snippets(ft, {
+                snippet("nv",
+                    fmt([[
+                    const navigation = useNavigation();
+                    useEffect(() => {{
+                        navigation.setOptions({{
+                            {}
+                        }});
+                    }}, [navigation]);]],
+                        { insert(1, "// write here") }
+                    )
+                )
+            })
+
+            ls.add_snippets(ft, {
+                snippet("us",
+                    fmt([[
+                    useEffect(() => {{
+                        {}
+                    }}, []);]],
+                        { insert(1, "// write here") }
+                    )
+                )
+            })
+        end
+
+        ls.add_snippets("go", {
+            snippet("ue",
+                fmt([[
+                        if err := nil {{
+                            return nil, {}
+                        }}
+                    ]],
+                    { insert(1, "// error") }
+                )
+            )
+        })
+
+        ls.add_snippets("go", {
+            snippet("fe",
+                fmt([[
+                        if err := nil {{
+                            return nil, fmt.errorf("{}", {})
+                        }}
+                    ]],
+                    {
+                        insert(1, 'Error'),
+                        insert(2, 'variable')
+                    }
+                )
+            )
+        })
+
+
+
         local cmp = require('cmp')
         local cmp_lsp = require("cmp_nvim_lsp")
         local capabilities = vim.tbl_deep_extend(
