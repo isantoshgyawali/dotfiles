@@ -6,8 +6,8 @@ configuration {
     display-run:                "";
     display-filebrowser:        "";
     display-window:             "";
-	drun-display-format:        "{name}";
-	window-format:              "{w} · {c} · {t}";
+    drun-display-format:        "{name}";
+    window-format:              "{w} · {c} · {t}";
     kb-row-up: "Up,Control+k,Shift+Tab,Shift+ISO_Left_Tab";
     kb-row-down: "Down,Control+j";
     kb-accept-entry: "Control+m,Return,KP_Enter";
@@ -15,14 +15,14 @@ configuration {
 }
 
 * {
-    background:     #1E2127FF;
+    background:     rgba(0, 0, 30, 0.7);
     background-alt: #282B31FF;
     foreground:     #FFFFFFFF;
     selected:       #61AFEFFF;
     active:         #98C379FF;
     urgent:         #E06C75FF;
 
-    border-colour:               var(selected);
+    border-colour:               royalblue;
     handle-colour:               var(selected);
     background-colour:           var(background);
     foreground-colour:           var(foreground);
@@ -54,7 +54,7 @@ window {
     location:                    center;
     anchor:                      center;
     fullscreen:                  false;
-    width:                       600px;
+    width:                       500px;
     x-offset:                    0px;
     y-offset:                    0px;
 
@@ -83,7 +83,7 @@ mainbox {
     enabled:                     true;
     spacing:                     10px;
     margin:                      0px;
-    padding:                     30px;
+    padding:                     20px;
     border:                      0px solid;
     border-radius:               0px 0px 0px 0px;
     border-color:                @border-colour;
@@ -101,7 +101,7 @@ inputbar {
     border-radius:               0px;
     border-color:                @border-colour;
     background-color:            transparent;
-    text-color:                  @foreground-colour;
+    text-color:                  white;
     children:                    [ "textbox-prompt-colon", "entry", "mode-switcher" ];
 }
 
@@ -111,12 +111,7 @@ prompt {
     text-color:                  inherit;
 }
 textbox-prompt-colon {
-    enabled:                     true;
-    padding:                     5px 0px;
-    expand:                      false;
-    str:                         "";
-    background-color:            inherit;
-    text-color:                  inherit;
+    enabled:                     false;
 }
 entry {
     enabled:                     true;
@@ -124,7 +119,7 @@ entry {
     background-color:            inherit;
     text-color:                  inherit;
     cursor:                      text;
-    placeholder:                 "Search...";
+    placeholder:                 "search";
     placeholder-color:           inherit;
 }
 num-filtered-rows {
@@ -156,23 +151,23 @@ case-indicator {
 listview {
     enabled:                     true;
     columns:                     1;
-    lines:                       8;
-    cycle:                       true;
+    lines:                       5;
+    cycle:                       false;
     dynamic:                     true;
     scrollbar:                   false;
     layout:                      vertical;
     reverse:                     false;
-    fixed-height:                true;
+    fixed-height:                false;
     fixed-columns:               true;
-    
+
     spacing:                     5px;
     margin:                      0px;
     padding:                     0px;
     border:                      0px solid;
     border-radius:               0px;
-    border-color:                @border-colour;
+    border-color:                white;
     background-color:            transparent;
-    text-color:                  @foreground-colour;
+    text-color:                  white;
     cursor:                      "default";
 }
 
@@ -180,50 +175,50 @@ listview {
 element {
     enabled:                     true;
     spacing:                     10px;
+    padding:                     12px 10px;
     margin:                      0px;
-    padding:                     5px 10px;
-    border:                      0px solid;
-    border-radius:               10px;
-    border-color:                @border-colour;
+    border:                      0 0 1px 0 solid;
+    border-radius:               0px;
+    border-color:                #fff3;
     background-color:            transparent;
-    text-color:                  @foreground-colour;
+    text-color:                  white;
     cursor:                      pointer;
 }
 element normal.normal {
-    background-color:            var(normal-background);
-    text-color:                  var(normal-foreground);
+    background-color:            transparent;
+    text-color:                  #fffa;
 }
 element normal.urgent {
-    background-color:            var(urgent-background);
-    text-color:                  var(urgent-foreground);
+    background-color:            transparent;
+    text-color:                  #fffa;
 }
 element normal.active {
-    background-color:            var(active-background);
-    text-color:                  var(active-foreground);
+    background-color:            transparent;
+    text-color:                  #fffa;
 }
 element selected.normal {
-    background-color:            var(selected-normal-background);
-    text-color:                  var(selected-normal-foreground);
+    background-color:            white;
+    text-color:                  royalblue;
 }
 element selected.urgent {
-    background-color:            var(selected-urgent-background);
-    text-color:                  var(selected-urgent-foreground);
+    background-color:            transparent;
+    text-color:                  #fffa;
 }
 element selected.active {
-    background-color:            var(selected-active-background);
-    text-color:                  var(selected-active-foreground);
+    background-color:            transparent;
+    text-color:                  #fffa;
 }
 element alternate.normal {
-    background-color:            var(alternate-normal-background);
-    text-color:                  var(alternate-normal-foreground);
+    background-color:            transparent;
+    text-color:                  #fffa;
 }
 element alternate.urgent {
-    background-color:            var(alternate-urgent-background);
-    text-color:                  var(alternate-urgent-foreground);
+    background-color:            transparent;
+    text-color:                  #fffa;
 }
 element alternate.active {
-    background-color:            var(alternate-active-background);
-    text-color:                  var(alternate-active-foreground);
+    background-color:            transparent;
+    text-color:                  #fffa;
 }
 element-icon {
     background-color:            transparent;
