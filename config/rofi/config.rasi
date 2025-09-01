@@ -15,14 +15,14 @@ configuration {
 }
 
 * {
-    background:     rgba(0, 0, 30, 0.7);
+    background:     #131213;
     background-alt: #282B31FF;
     foreground:     #FFFFFFFF;
-    selected:       #61AFEFFF;
+    selected:       #3D2E24;
     active:         #98C379FF;
     urgent:         #E06C75FF;
 
-    border-colour:               royalblue;
+    border-colour:               #fff2;
     handle-colour:               var(selected);
     background-colour:           var(background);
     foreground-colour:           var(foreground);
@@ -54,7 +54,7 @@ window {
     location:                    center;
     anchor:                      center;
     fullscreen:                  false;
-    width:                       500px;
+    width:                       650px;
     x-offset:                    0px;
     y-offset:                    0px;
 
@@ -63,7 +63,7 @@ window {
     margin:                      0px;
     padding:                     0px;
     border:                      1px solid;
-    border-radius:               10px;
+    border-radius:               20px;
     border-color:                @border-colour;
     cursor:                      "default";
     /* Backgroud Colors */
@@ -83,7 +83,7 @@ mainbox {
     enabled:                     true;
     spacing:                     10px;
     margin:                      0px;
-    padding:                     20px;
+    padding:                     25px 25px;
     border:                      0px solid;
     border-radius:               0px 0px 0px 0px;
     border-color:                @border-colour;
@@ -96,12 +96,12 @@ inputbar {
     enabled:                     true;
     spacing:                     10px;
     margin:                      0px;
-    padding:                     0px;
-    border:                      0px solid;
+    padding:                     3px;
+    border:                      0 0 1px 0 solid;
     border-radius:               0px;
     border-color:                @border-colour;
     background-color:            transparent;
-    text-color:                  white;
+    text-color:                  #fffa;
     children:                    [ "textbox-prompt-colon", "entry", "mode-switcher" ];
 }
 
@@ -111,7 +111,13 @@ prompt {
     text-color:                  inherit;
 }
 textbox-prompt-colon {
-    enabled:                     false;
+    enabled:                     true;
+    padding:                     5px 0px;
+    expand:                      false;
+    width:                      20px;
+    background-color:            inherit;
+    text-color:                  inherit;
+    str:                        "";
 }
 entry {
     enabled:                     true;
@@ -157,10 +163,10 @@ listview {
     scrollbar:                   false;
     layout:                      vertical;
     reverse:                     false;
-    fixed-height:                false;
+    fixed-height:                true;
     fixed-columns:               true;
 
-    spacing:                     5px;
+    spacing:                     0px;
     margin:                      0px;
     padding:                     0px;
     border:                      0px solid;
@@ -175,50 +181,50 @@ listview {
 element {
     enabled:                     true;
     spacing:                     10px;
-    padding:                     12px 10px;
+    padding:                     10px 10px;
     margin:                      0px;
-    border:                      0 0 1px 0 solid;
-    border-radius:               0px;
-    border-color:                #fff3;
+    border:                      0px solid;
+    border-radius:               12px;
+    border-color:                #fff1;
     background-color:            transparent;
-    text-color:                  white;
+    text-color:                  #fffa;
     cursor:                      pointer;
 }
 element normal.normal {
     background-color:            transparent;
-    text-color:                  #fffa;
+    text-color:                  #fff7;
 }
 element normal.urgent {
     background-color:            transparent;
-    text-color:                  #fffa;
+    text-color:                  #fff7;
 }
 element normal.active {
     background-color:            transparent;
-    text-color:                  #fffa;
+    text-color:                  #fff7;
 }
 element selected.normal {
-    background-color:            white;
-    text-color:                  royalblue;
+    background-color:            #3B2D25;
+    text-color:                  white;
 }
 element selected.urgent {
     background-color:            transparent;
-    text-color:                  #fffa;
+    text-color:                  #fff7;
 }
 element selected.active {
     background-color:            transparent;
-    text-color:                  #fffa;
+    text-color:                  #fff7;
 }
 element alternate.normal {
     background-color:            transparent;
-    text-color:                  #fffa;
+    text-color:                  #fff7;
 }
 element alternate.urgent {
     background-color:            transparent;
-    text-color:                  #fffa;
+    text-color:                  #fff7;
 }
 element alternate.active {
     background-color:            transparent;
-    text-color:                  #fffa;
+    text-color:                  #fff7;
 }
 element-icon {
     background-color:            transparent;
