@@ -9,6 +9,7 @@ alias pwc='pwd | wl-copy'
 alias open='xdg-open'
 alias e='exit'
 alias key='cat ~/key | wl-copy'
+alias nt='nmtui'
 
 alias t='tmux'
 alias c='code'
@@ -35,7 +36,7 @@ alias flf='du -shx -- * | sort -rh | head -10' #prints out the top 10 largest fi
 #directories def'n for prioritzation
 function o() {
     local firstPriority=$([ "$PWD" != "$HOME" ] && echo "$PWD" || echo "")
-    local find_command="find $ZDOTDIR/.zshrc ${firstPriority:+$firstPriority} $HOME/{projects,backups,dotfiles,.config} $HOME" 
+    local find_command="find $ZDOTDIR/.zshrc ${firstPriority:+$firstPriority} $HOME/{projects,backups,dotfiles,.config,Downloads} $HOME" 
     local excludes=(
         "node_modules"
         "Android"
@@ -56,7 +57,7 @@ function o() {
 function g() {
     local selected_dir
     local firstPriority=$([ "$PWD" != "$HOME" ] && echo "$PWD" || echo "")
-    local find_command="find ${firstPriority:+$firstPriority} $HOME/{projects,backups,dotfiles,.config} $HOME"
+    local find_command="find $ZDOTDIR/.zshrc ${firstPriority:+$firstPriority} $HOME/{projects,backups,dotfiles,.config,Downloads} $HOME" 
     local excludes=(
         "node_modules"
         "Android"
@@ -81,7 +82,7 @@ function g() {
 function v() {
     local selected_dir
     local firstPriority=$([ "$PWD" != "$HOME" ] && echo "$PWD" || echo "")
-    local find_command="find ${firstPriority:+$firstPriority} $HOME/{projects,backups,dotfiles,.config} $HOME"
+    local find_command="find $ZDOTDIR/.zshrc ${firstPriority:+$firstPriority} $HOME/{projects,backups,dotfiles,.config,Downloads} $HOME" 
     local excludes=(
         "node_modules"
         "Android"
@@ -120,7 +121,7 @@ alias spq='sudo systemctl start postgresql'
 alias rpq='sudo systemctl restart postgresql'
 alias xpq='sudo systemctl stop postgresql'
 
-alias bto='rfkill unblock bluetooth && bluetoothctl power on && bluetoothctl connect 6F:F8:B2:4B:E2:10'
+alias bto='rfkill unblock bluetooth && bluetoothctl power on && bluetoothctl connect BE:36:5C:BA:2C:FD'
 alias btc='bluetoothctl power off' 
 
 function pk(){
