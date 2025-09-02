@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Android Studio
+Exec=/home/cosnate/.local/share/applications/android-studio/bin/studio
+Terminal=false
+Type=Application
+Icon=studio
+StartupWMClass=studio
+X-AppImage-Version=1.9.10
+Comment=studio
+MimeType=x-scheme-handler/studio;
+Categories=Office;

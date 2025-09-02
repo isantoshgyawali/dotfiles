@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Obsidian
+Exec=/home/cosnate/.local/share/applications/squashfs-root/AppRun
+Terminal=false
+Type=Application
+Icon=obsidian
+StartupWMClass=obsidian
+X-AppImage-Version=1.9.10
+Comment=Obsidian
+MimeType=x-scheme-handler/obsidian;
+Categories=Office;
