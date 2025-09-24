@@ -1,9 +1,9 @@
 [Desktop Entry]
-Name=Android Studio
-Exec=/home/cosnate/.local/share/applications/apps/android-studio/bin/studio
+Name=Postman
+Exec=/home/cosnate/.local/share/applications/apps/Postman/Postman
 Terminal=false
 Type=Application
-Icon=studio
+Icon=postman
 StartupWMClass=studio
 X-AppImage-Version=1.9.10
 Comment=studio
