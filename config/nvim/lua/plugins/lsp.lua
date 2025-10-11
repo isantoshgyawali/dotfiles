@@ -36,13 +36,60 @@ return {
             ls.add_snippets(ft, {
                 snippet("nv",
                     fmt([[
+                    import {{ NativeStackNavigationOptions }} from "@react-navigation/native-stack"
+                    import {{ useNavigation }} from "expo-router";
                     const navigation = useNavigation();
                     useEffect(() => {{
-                        navigation.setOptions({{
+                        const options: NativeStackNavigationOptions = {{
+                            headerShown: true,
+                            header: () => (
+                                <SafeAreaView>
+                                </SafeAreaView>
+                            ),
                             {}
-                        }});
+                        }};
+
+                        navigation.setOptions(options);
                     }}, [navigation]);]],
                         { insert(1, "// write here") }
+                    )
+                )
+            })
+
+            ls.add_snippets(ft, {
+                snippet("rnfe",
+                    fmt([[
+                    import {{ Text, View }} from "react-native";
+                    export default function {}() {{
+                        return (
+                            <View>
+                                <Text>{2}</Text>
+                            </View>
+                        )
+                    }}]],
+                        { insert(1, "Function_Name"), insert(2, "Hello, there!") }
+                    )
+                )
+            })
+
+            ls.add_snippets(ft, {
+                snippet("st",
+                    fmt([[
+                        setTimeout(() => {{
+                            {}
+                        }}, 300)
+                    ]],
+                        { insert(1, "// write here") }
+                    )
+                )
+            })
+
+            ls.add_snippets(ft, {
+                snippet("ei",
+                    fmt([[
+                    import {{{}}} from "@expo/vector-icons"
+                    ]],
+                        { insert(1, "IconPack") }
                     )
                 )
             })
@@ -59,14 +106,15 @@ return {
             })
         end
 
+        -- golang snippets
         ls.add_snippets("go", {
             snippet("ue",
                 fmt([[
-                        if err := nil {{
+                        if err != nil {{
                             return nil, {}
                         }}
                     ]],
-                    { insert(1, "// error") }
+                    { insert(1, "err") }
                 )
             )
         })
@@ -74,8 +122,8 @@ return {
         ls.add_snippets("go", {
             snippet("fe",
                 fmt([[
-                        if err := nil {{
-                            return nil, fmt.errorf("{}", {})
+                        if err != nil {{
+                            return nil, fmt.Errorf("{}: %w", {}, err)
                         }}
                     ]],
                     {
@@ -85,8 +133,6 @@ return {
                 )
             )
         })
-
-
 
         local cmp = require('cmp')
         local cmp_lsp = require("cmp_nvim_lsp")
@@ -104,7 +150,8 @@ return {
                 "gopls",
                 "ts_ls",
                 "tailwindcss",
-                "jsonls"
+                "sqls",
+                "jsonls",
             },
             handlers = {
                 function(server_name) -- default handler (optional)
@@ -127,14 +174,6 @@ return {
                         }
                     }
                 end,
-
-                -- ['ts_ls'] = function()
-                --     require("lspconfig").ts_ls.setup({
-                --         server = {
-                --             capabilities = capabilities
-                --         }
-                --     })
-                -- end,
             }
         })
 
@@ -153,10 +192,9 @@ return {
                 ["<C-Space>"] = cmp.mapping.complete(),
             }),
             sources = cmp.config.sources({
-                { name = 'nvim_lsp' },
-                { name = 'luasnip' }, -- For luasnip users.
-            }, {
-                { name = 'buffer' },
+                { name = 'luasnip',  priority = 1000 },
+                { name = 'nvim_lsp', priority = 900 },
+                { name = 'buffer',   priority = 500 },
             })
         })
 

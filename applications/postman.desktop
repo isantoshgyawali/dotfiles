@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=Postman
-Exec=/home/cosnate/.local/share/applications/apps/Postman/Postman
+Exec=/home/cosnate/.local/share/applications/Postman/Postman
 Terminal=false
 Type=Application
 Icon=postman

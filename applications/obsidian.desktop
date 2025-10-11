@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=Obsidian
-Exec=/home/cosnate/.local/share/applications/apps/Obsidian/AppRun
+Exec=/home/cosnate/.local/share/applications/Obsidian/AppRun
 Terminal=false
 Type=Application
 Icon=obsidian

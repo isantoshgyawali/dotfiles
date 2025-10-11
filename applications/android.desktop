@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=Android Studio
-Exec=/home/cosnate/.local/share/applications/apps/android-studio/bin/studio
+Exec=/home/cosnate/.local/share/applications/android-studio/bin/studio
 Terminal=false
 Type=Application
 Icon=studio

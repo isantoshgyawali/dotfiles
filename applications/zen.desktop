@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=Zen Browser
-Exec=/home/cosnate/.local/share/applications/apps/zen/zen
+Exec=/home/cosnate/.local/share/applications/zen/zen
 Icon=zen
 Type=Application
 Categories=Network;WebBrowser;
