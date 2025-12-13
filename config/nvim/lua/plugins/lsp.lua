@@ -44,9 +44,9 @@ return {
                             headerShown: true,
                             header: () => (
                                 <SafeAreaView>
+                                    {}
                                 </SafeAreaView>
                             ),
-                            {}
                         }};
 
                         navigation.setOptions(options);
