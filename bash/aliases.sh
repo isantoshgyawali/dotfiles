@@ -28,6 +28,42 @@ alias ttype='ttyper -w 30'
 
 alias fcp='cat $(find ~/{projects,backups,dotfiles,.config} $HOME -type f| fzf --height 69% --exact --reverse --preview "bat --color always {}") | wl-copy'
 
+#-----------------------------
+# Terminal Narrative/Neo Mode
+#-----------------------------
+function tnm() {
+    local SPEED=10 TEXT rows cols row col
+    command clear
+
+    if [[ "$1" =~ '^[0-9]+$' ]]; then
+      SPEED="$1"
+      shift
+    fi
+
+    # Read from stdin if piped
+    if [[ -p /dev/stdin ]]; then
+        TEXT="$(cat)"
+    else
+        TEXT="$*"
+    fi
+
+    rows=$(command tput lines)
+    cols=$(command tput cols)
+    row=$(( rows / 2 ))
+    col=$(( (cols - ${#TEXT}) / 2 > 0 ? (cols - ${#TEXT}) / 2 : 0 ))
+
+    command tput cup $row $col
+    echo -n "$TEXT" | pv -qL "$SPEED"
+
+    # hide cursor afterwards
+    # command tput civis
+    # cursor is restored on exit (Ctrl-C, normal exit, etc.)
+    # trap 'command tput cnorm; return' INT TERM
+
+    # Wait forever until Ctrl-C
+    while :; do sleep 1; done
+}
+
 #-----------
 # dir/files |
 #-----------
@@ -194,16 +230,3 @@ alias lg='lazygit'
 alias vne='source $HOME/projects/ps/myenv/bin/activate'
 alias gor="go run ./cmd/main/main.go"
 alias gob="go build ./cmd/main/main.go"
-
-function cl() {
-    if [ -n "$ZSH_VERSION" ]; then
-        read "port?Enter port: "
-        read "route?route: "
-    else
-        read -p "Enter port: " port
-        read -p "route: " route
-    fi
-
-    url="localhost:${port:=8080}/${route:+$route/}"
-    curl "$url"
-}
