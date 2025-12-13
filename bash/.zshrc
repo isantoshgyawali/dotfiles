@@ -95,9 +95,19 @@ zinit wait lucid light-mode for \
 
 # double-tab to auto-complete inline-suggestion
 bindkey '^I^I' autosuggest-accept
+# ctrl-x ctrl-e to edit-command-line
+autoload -Uz edit-command-line
+zle -N edit-command-line
+bindkey '^x^e' edit-command-line
+
 
 # Completion styling
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 zstyle ':completion:*' menu yes
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
+
+export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"  # Added by n-install (see http://git.io/n-install-repo).
+
+# bun completions
+[ -s "/home/cosnate/.bun/_bun" ] && source "/home/cosnate/.bun/_bun"
