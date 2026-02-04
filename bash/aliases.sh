@@ -12,7 +12,7 @@ alias key='cat ~/key | wl-copy'
 alias nt='nmtui'
 
 alias t='tmux'
-alias c='code'
+alias c='antigravity'
 alias vi='nvim'
 alias s='scrcpy --no-audio'
 alias gpt='firefox https://chat.openai.com & disown'
@@ -221,7 +221,7 @@ alias glf='git log -n 5 --decorate --oneline --graph'
 alias gcl='git clone'
 alias gpl='git pull'
 alias gp='git push'
-
+alias og='zen $(git remote get-url --push origin)'
 alias lg='lazygit'
 
 #---------------------------------------
