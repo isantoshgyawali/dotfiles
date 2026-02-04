@@ -32,25 +32,25 @@ alias fcp='cat $(find ~/{projects,backups,dotfiles,.config} $HOME -type f| fzf -
 # Terminal Narrative/Neo Mode
 #-----------------------------
 function tnm() {
-    local SPEED=10 TEXT rows cols row col
-    command clear
+  local SPEED=10 TEXT rows cols row col
+  command clear
 
-    if [[ "$1" =~ '^[0-9]+$' ]]; then
-      SPEED="$1"
-      shift
-    fi
+  if [[ "$1" =~ '^[0-9]+$' ]]; then
+    SPEED="$1"
+    shift
+  fi
 
-    # Read from stdin if piped
-    if [[ -p /dev/stdin ]]; then
-        TEXT="$(cat)"
-    else
-        TEXT="$*"
-    fi
+  # Read from stdin if piped
+  if [[ -p /dev/stdin ]]; then
+    TEXT="$(cat)"
+  else
+    TEXT="$*"
+  fi
 
-    rows=$(command tput lines)
-    cols=$(command tput cols)
-    row=$(( rows / 2 ))
-    col=$(( (cols - ${#TEXT}) / 2 > 0 ? (cols - ${#TEXT}) / 2 : 0 ))
+  rows=$(command tput lines)
+  cols=$(command tput cols)
+  row=$(( rows / 2 ))
+  col=$(( (cols - ${#TEXT}) / 2 > 0 ? (cols - ${#TEXT}) / 2 : 0 ))
 
     command tput cup $row $col
     echo -n "$TEXT" | pv -qL "$SPEED"
@@ -62,7 +62,7 @@ function tnm() {
 
     # Wait forever until Ctrl-C
     while :; do sleep 1; done
-}
+  }
 
 #-----------
 # dir/files |
@@ -71,73 +71,73 @@ alias flf='du -shx -- * | sort -rh | head -10' #prints out the top 10 largest fi
 
 #directories def'n for prioritzation
 function o() {
-    local firstPriority=$([ "$PWD" != "$HOME" ] && echo "$PWD" || echo "")
-    local find_command="find $ZDOTDIR/.zshrc ${firstPriority:+$firstPriority} $HOME/{projects,backups,dotfiles,.config,Downloads} $HOME" 
-    local excludes=(
-        "node_modules"
-        "Android"
-        "go"
-        "phone"
-        ".git"
-        ".local/share/waydroid"
-    )
+  local firstPriority=$([ "$PWD" != "$HOME" ] && echo "$PWD" || echo "")
+  local find_command="find $ZDOTDIR/.zshrc ${firstPriority:+$firstPriority} $HOME/{projects,backups,dotfiles,.config,Downloads} $HOME" 
+  local excludes=(
+    "node_modules"
+    "Android"
+    "go"
+    "phone"
+    ".git"
+    ".local/share/waydroid"
+  )
 
-    for exclude in "${excludes[@]}"; do
-        find_command+=" -path \"*/$exclude/*\" -prune -o"
-    done
-    find_command+=" -type f -print"
+  for exclude in "${excludes[@]}"; do
+    find_command+=" -path \"*/$exclude/*\" -prune -o"
+  done
+  find_command+=" -type f -print"
 
-    eval "$find_command" | fzf --height 69% --reverse --exact --preview "bat --color always {}" | xargs -r nvim
+  eval "$find_command" | fzf --height 69% --reverse --exact --preview "bat --color always {}" | xargs -r nvim
 }
 
 function g() {
-    local selected_dir
-    local firstPriority=$([ "$PWD" != "$HOME" ] && echo "$PWD" || echo "")
-    local find_command="find $ZDOTDIR/.zshrc ${firstPriority:+$firstPriority} $HOME/{projects,backups,dotfiles,.config,Downloads} $HOME" 
-    local excludes=(
-        "node_modules"
-        "Android"
-        "go"
-        "phone"
-        ".git"
-        ".local/share/waydroid"
-    )
+  local selected_dir
+  local firstPriority=$([ "$PWD" != "$HOME" ] && echo "$PWD" || echo "")
+  local find_command="find $ZDOTDIR/.zshrc ${firstPriority:+$firstPriority} $HOME/{projects,backups,dotfiles,.config,Downloads} $HOME" 
+  local excludes=(
+    "node_modules"
+    "Android"
+    "go"
+    "phone"
+    ".git"
+    ".local/share/waydroid"
+  )
 
-    for exclude in "${excludes[@]}"; do
-        find_command+=" -path \"*/$exclude/*\" -prune -o"
-    done
-    find_command+=" -type d -print"
+  for exclude in "${excludes[@]}"; do
+    find_command+=" -path \"*/$exclude/*\" -prune -o"
+  done
+  find_command+=" -type d -print"
 
-    # Only cd if a directory was selected
-    selected_dir=$(eval "$find_command" | fzf --height 69% --reverse --exact)
-    if [[ -n $selected_dir ]]; then
-        cd "$selected_dir" 
-    fi
+  # Only cd if a directory was selected
+  selected_dir=$(eval "$find_command" | fzf --height 69% --reverse --exact)
+  if [[ -n $selected_dir ]]; then
+    cd "$selected_dir" 
+  fi
 }
 
 function v() {
-    local selected_dir
-    local firstPriority=$([ "$PWD" != "$HOME" ] && echo "$PWD" || echo "")
-    local find_command="find $ZDOTDIR/.zshrc ${firstPriority:+$firstPriority} $HOME/{projects,backups,dotfiles,.config,Downloads} $HOME" 
-    local excludes=(
-        "node_modules"
-        "Android"
-        "go"
-        "phone"
-        ".git"
-        ".local/share/waydroid"
-    )
+  local selected_dir
+  local firstPriority=$([ "$PWD" != "$HOME" ] && echo "$PWD" || echo "")
+  local find_command="find $ZDOTDIR/.zshrc ${firstPriority:+$firstPriority} $HOME/{projects,backups,dotfiles,.config,Downloads} $HOME" 
+  local excludes=(
+    "node_modules"
+    "Android"
+    "go"
+    "phone"
+    ".git"
+    ".local/share/waydroid"
+  )
 
-    for exclude in "${excludes[@]}"; do
-        find_command+=" -path \"*/$exclude/*\" -prune -o"
-    done
-    find_command+=" -type d -print"
+  for exclude in "${excludes[@]}"; do
+    find_command+=" -path \"*/$exclude/*\" -prune -o"
+  done
+  find_command+=" -type d -print"
 
-    # Only open nvim if a directory was selected
-    selected_dir=$(eval "$find_command" | fzf --height 69% --reverse --exact)
-    if [[ -n $selected_dir ]]; then
-        cd "$selected_dir" && nvim .
-    fi
+  # Only open nvim if a directory was selected
+  selected_dir=$(eval "$find_command" | fzf --height 69% --reverse --exact)
+  if [[ -n $selected_dir ]]; then
+    cd "$selected_dir" && nvim .
+  fi
 }
 
 alias ..='cd ..'
@@ -161,28 +161,28 @@ alias bto='rfkill unblock bluetooth && bluetoothctl power on && bluetoothctl con
 alias btc='bluetoothctl power off' 
 
 function pk(){
-    #-- get the PID of the selected process
-    selected_pid=$(ps aux | fzf --multi --header='[Use Tab to select multiple processes]' --reverse --height 70% | awk '{ print $2 }' | tr '\n' ' ' | sed 's/ $//')
+  #-- get the PID of the selected process
+  selected_pid=$(ps aux | fzf --multi --header='[Use Tab to select multiple processes]' --reverse --height 70% | awk '{ print $2 }' | tr '\n' ' ' | sed 's/ $//')
 
-    #-- checks if a PID is selected
-    if [ -n "$selected_pid" ]; then
-        if [ -n "$ZSH_VERSION" ]; then
-            read "confirmation?Are you sure you want to kill the selected process(es) (PIDs: $selected_pid)? (y/n): "
-        else
-            read -p "Are you sure you want to kill the selected process(es) (PIDs: $selected_pid)? (y/n): " confirmation
-        fi
-
-        if [ "$confirmation" = "y" ]; then
-            for pid in ${=selected_pid}; do
-                kill -9 $pid
-            done
-            echo "Process (PID: $selected_pid) killed."
-        else
-            echo "Process not killed."
-        fi
+  #-- checks if a PID is selected
+  if [ -n "$selected_pid" ]; then
+    if [ -n "$ZSH_VERSION" ]; then
+      read "confirmation?Are you sure you want to kill the selected process(es) (PIDs: $selected_pid)? (y/n): "
     else
-        echo "No process selected."
+      read -p "Are you sure you want to kill the selected process(es) (PIDs: $selected_pid)? (y/n): " confirmation
     fi
+
+    if [ "$confirmation" = "y" ]; then
+      for pid in ${=selected_pid}; do
+        kill -9 $pid
+      done
+      echo "Process (PID: $selected_pid) killed."
+    else
+      echo "Process not killed."
+    fi
+  else
+    echo "No process selected."
+  fi
 }
 
 #BACKLIGHT 
@@ -195,11 +195,11 @@ alias phone="sshfs -p 8022 $DEV:/storage/emulated/0/ ~/phone/"
 #  git_quick  |
 #-------------
 function isan(){
-    if [ -n "$1" ]; then
-        xdg-open https://github.com/isantoshgyawali/$1 & disown
-    else
-        xdg-open https://github.com/isantoshgyawali/ & disown
-    fi
+  if [ -n "$1" ]; then
+    xdg-open https://github.com/isantoshgyawali/$1 & disown
+  else
+    xdg-open https://github.com/isantoshgyawali/ & disown
+  fi
 }
 alias ga='git add .'
 alias gac='git add . && git commit -m'
@@ -221,8 +221,16 @@ alias glf='git log -n 5 --decorate --oneline --graph'
 alias gcl='git clone'
 alias gpl='git pull'
 alias gp='git push'
-alias og='zen $(git remote get-url --push origin)'
 alias lg='lazygit'
+
+function og() {
+  url=$(git remote get-url --push origin 2>/dev/null)
+  if [ -z "$url" ]; then
+    echo "no remote origin url found for this repo"
+  else
+    zen "$url"
+  fi
+}
 
 #---------------------------------------
 #  others - generally project specific  |
