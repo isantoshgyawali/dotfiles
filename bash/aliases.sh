@@ -228,7 +228,7 @@ function og() {
   if [ -z "$url" ]; then
     echo "no remote origin url found for this repo"
   else
-    zen "$url"
+    zen "$url" & disown
   fi
 }
 
