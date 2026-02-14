@@ -21,6 +21,7 @@ vim.o.backup = false
 vim.o.modifiable = true
 vim.o.encoding = "UTF-8"
 vim.opt.updatetime = 50
+vim.opt.ignorecase = true
 
 vim.opt.scrolloff = 8
 
