@@ -32,9 +32,11 @@ setopt hist_find_no_dups
 prompt_counter=0
 set_prompt() {
     local git_branch=""
+    local venv=""
+
     if git rev-parse --is-inside-work-tree &>/dev/null; then
         git_branch=$(git symbolic-ref --short HEAD 2>/dev/null)
-        git_branch=" ($git_branch)"
+        git_branch="($git_branch)"
     fi
 
     # Add the virtual environment name if active

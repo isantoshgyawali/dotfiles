@@ -235,6 +235,6 @@ function og() {
 #---------------------------------------
 #  others - generally project specific  |
 #---------------------------------------
-alias vne='source $HOME/projects/ps/myenv/bin/activate'
+alias vne='source ./myenv/bin/activate'
 alias gor="go run ./cmd/main/main.go"
 alias gob="go build ./cmd/main/main.go"
