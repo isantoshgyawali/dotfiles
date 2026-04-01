@@ -14,6 +14,8 @@ return {
                         "!**/node_modules/*",
                         "-g",
                         "!**/.git/*",
+                        "-g",
+                        "!**/myenv/*",
                     },
                 },
             },
