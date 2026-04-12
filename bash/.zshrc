@@ -9,6 +9,7 @@ export PATH
 #DEFAULT EDITOR
 export VISUAL=nvim;
 export EDITOR=nvim;
+setopt INTERACTIVE_COMMENTS # allow comments
 
 # Keybindings
 bindkey -e
@@ -113,3 +114,6 @@ export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PR
 
 # bun completions
 [ -s "/home/cosnate/.bun/_bun" ] && source "/home/cosnate/.bun/_bun"
+
+export CC=clang
+export CXX=clang++
