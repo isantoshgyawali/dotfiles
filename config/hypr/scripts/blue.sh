@@ -3,9 +3,9 @@
 STATE_FILE="/tmp/blue_filter_state"
 if [[ -f "$STATE_FILE" ]]; then
     rm "$STATE_FILE"
-    brightnessctl set "5%"
+    brightnessctl set "0%"
     hyprctl hyprsunset gamma 75
-    hyprctl hyprsunset temperature 2500 
+    hyprctl hyprsunset temperature 2000 
     notify-send -t 1000 "gone blue"
 else
     touch "$STATE_FILE"
