@@ -1,7 +1,7 @@
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
--- options 
+-- options
 -- Tabs and Indentation
 vim.o.shiftwidth = 4
 vim.o.softtabstop = 4
@@ -15,7 +15,7 @@ vim.o.relativenumber = true
 vim.o.termguicolors = true
 vim.o.cursorline = true
 
--- Behavior 
+-- Behavior
 vim.o.swapfile = false
 vim.o.backup = false
 vim.o.modifiable = true
