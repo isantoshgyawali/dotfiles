@@ -17,7 +17,7 @@ export PATH="$HOME/.cargo/bin:$PATH"
 
 #--- gvm : go-version manager ---
 [[ -s "/home/cosnate/.gvm/scripts/gvm" ]] && source "/home/cosnate/.gvm/scripts/gvm"
-unset -f cd
+# unset -f cd
 export PATH="$HOME/go/bin:$PATH"
 
 # --- androidStudio ---
@@ -40,9 +40,6 @@ export PATH=$BUN_INSTALL/bin:$PATH
 
 # --- pyenv ---  
 # lazy-loading: pyenv [python version manager]
-pyenv() {
-  unfunction pyenv
-  eval "$(command pyenv init --path)"
-  eval "$(command pyenv virtualenv-init -)"
-  pyenv "$@"
-}
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init - zsh)"

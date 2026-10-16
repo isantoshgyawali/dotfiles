@@ -3,4 +3,4 @@ Description=Battery notification script
 
 [Service]
 Type=oneshot
-ExecStart=%h/dotfiles/bin/battery_notify.sh
+ExecStart=%h/dotfiles/bin/battery-notify.sh
