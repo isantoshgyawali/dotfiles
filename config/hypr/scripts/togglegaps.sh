@@ -1,11 +1,10 @@
 #!/bin/sh
+state="${XDG_RUNTIME_DIR:-/tmp}/gaps_off"
 
-# current gaps_in 
-x=$(hyprctl getoption general:gaps_in | grep custom | awk '{print $3}')
-
-#toggling 
-if [ "$x" -ne 0 ]; then 
- 	hyprctl --batch 'keyword general:gaps_in 0; keyword general:gaps_out 0; keyword decoration:rounding 0'
-else 
-	hyprctl --batch 'keyword general:gaps_in 3; keyword general:gaps_out 7; keyword decoration:rounding 5'
+if [ -f "$state" ]; then
+    rm "$state"
+    hyprctl eval 'hl.config({ general = { gaps_in = 3, gaps_out = 10 }, decoration = { rounding = 7 } })'
+else
+    touch "$state"
+    hyprctl eval 'hl.config({ general = { gaps_in = 0, gaps_out = 0 }, decoration = { rounding = 0 } })'
 fi

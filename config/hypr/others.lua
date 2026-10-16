@@ -11,6 +11,7 @@ hl.config({
         -- -1.0 to 1.0, 0 means no modification.
         sensitivity = 0.7,
     },
+    xwayland = { force_zero_scaling = true }
 })
 
 -- gesture-config [https://wiki.hypr.land/configuring/core/binds/gestures]
@@ -50,8 +51,8 @@ hl.gesture({
         local restore = os.getenv("HOME")
             .. "/.config/tmux/plugins/tmux-resurrect/scripts/restore.sh"
 
-        local script = table.concat({ pile
-        "if ! tmux has-session 2>/dev/null; then",
+        local script = table.concat({
+            "if ! tmux has-session 2>/dev/null; then",
             "  tmux new-session -d -s editor -n editor 2>/dev/null;",
             '  ( sleep 1; tmux run-shell "' .. restore .. '" ) >/dev/null 2>&1 &',
             "fi;",

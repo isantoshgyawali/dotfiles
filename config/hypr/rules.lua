@@ -18,7 +18,14 @@ hl.window_rule({ match = { class = "^(org.gnome.Nautilus)$" }, workspace = 10 })
 hl.window_rule({ match = { class = "^([Ww]aydroid.*)$" }, workspace = 10 })
 hl.window_rule({ match = { class = "^([Aa]ntigravity.*)$" }, workspace = 10 })
 hl.window_rule({ match = { class = "^(floating)$" }, float = true })
-hl.window_rule({ match = { title = "^(controlCenter)$" }, size = { "70%", "80%" } })
+hl.window_rule({ match = { title = "^(controlCenter)$" }, size = "70% 80%" })
+hl.window_rule({
+    match = { class = "^floating$" },
+    float = true,
+    center = true,
+    size = "70% 80%",
+    workspace = "special",
+})
 
 --android-shared-screen
 hl.window_rule({ match = { title = "^(Emulator)$" }, workspace = 1 })

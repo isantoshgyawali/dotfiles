@@ -54,11 +54,7 @@ hl.bind("SUPER + f", hl.dsp.window.fullscreen({ action = "toggle" }))
 hl.bind("SUPER + SHIFT + f", hl.dsp.window.fullscreen_state({ action = "toggle", internal = 0, client = 2 }))
 hl.bind("SUPER + p", hl.dsp.window.float())
 hl.bind("SUPER + O", hl.dsp.exec_cmd("hyprctl setprop active opaque toggle"))
-
-hl.bind("SUPER + CTRL + Return", function()
-    hl.exec_cmd(terminal .. ' --class "floating" --title "controlCenter"',
-        { workspace = "special" })
-end)
+hl.bind("SUPER + CTRL + Return", hl.dsp.exec_cmd(terminal .. ' --class "floating" --title "control-center"'))
 
 ---- RESIZING WINDOWS --
 hl.bind("SUPER + CTRL + h", hl.dsp.window.resize({ x = -20, y = 0, relative = true }))
