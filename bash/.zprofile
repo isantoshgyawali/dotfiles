@@ -21,8 +21,13 @@ export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/go/bin:$PATH"
 
 # --- androidStudio ---
+export ANDROID_USER_HOME=$HOME/.config/.android
+export ANDROID_AVD_HOME=$HOME/.config/.android/avd
 export ANDROID_HOME="$HOME/Android/Sdk"
 export PATH="$PATH:$ANDROID_HOME/platform-tools"
+
+export JAVA_HOME=/usr/lib/jvm/jdk-21.0.12.1-oracle-x64
+export PATH="$JAVA_HOME/bin:$PATH"
 
 # --- n : node-version-manager ---
 export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"

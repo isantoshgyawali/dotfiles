@@ -46,7 +46,7 @@ end)
 -- initialize tmux session and applications
 hl.gesture({
     fingers = 4,
-    direction = "up",
+    direction = "right",
     action = function()
         local restore = os.getenv("HOME")
             .. "/.config/tmux/plugins/tmux-resurrect/scripts/restore.sh"
