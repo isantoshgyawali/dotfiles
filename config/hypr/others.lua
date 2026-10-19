@@ -2,6 +2,7 @@
 hl.config({
     -- required for togglesplit
     dwindle = { preserve_split = true },
+    xwayland = { force_zero_scaling = true },
     input = {
         kb_layout = "us",
         follow_mouse = 1,
@@ -11,7 +12,19 @@ hl.config({
         -- -1.0 to 1.0, 0 means no modification.
         sensitivity = 0.7,
     },
-    xwayland = { force_zero_scaling = true }
+    plugin = {
+        scrolloverview = {
+            scale = 0.4,
+            workspace_gap = 50,
+            layout = "horizontal",    -- vertical, horizontal, or auto (per-monitor orientation)
+            wallpaper = 2,            -- 0: global only, 1: per-workspace only, 2: both
+            blur = true,              -- blur only the main overview wallpaper
+            shadow = {
+                enabled = false,
+                range = 50,
+            },
+        },
+    }
 })
 
 -- gesture-config [https://wiki.hypr.land/configuring/core/binds/gestures]

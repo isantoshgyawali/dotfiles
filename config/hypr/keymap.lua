@@ -81,8 +81,9 @@ hl.bind("SUPER + Return", hl.dsp.exec_cmd(terminal))
 hl.bind("SUPER + E", hl.dsp.exec_cmd(fileManager))
 hl.bind("SUPER + R", script("books.sh"))
 hl.bind("SUPER + M", hl.dsp.exec_cmd('kitty --title "sysmon" -e ' .. sysMonitor))
-
--- hl.bind("ALT + tab", hl.dsp.hyprtasking:toggle("cursor"))
+hl.bind("ALT + tab", function()
+    hl.plugin.scrolloverview.overview("toggle all")
+end)
 
 ---- clipse: clipboard manager
 hl.bind("SUPER + V", function()

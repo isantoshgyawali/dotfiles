@@ -20,10 +20,16 @@ hl.window_rule({ match = { class = "^([Aa]ntigravity.*)$" }, workspace = 10 })
 hl.window_rule({ match = { class = "^(floating)$" }, float = true })
 hl.window_rule({ match = { title = "^(controlCenter)$" }, size = "70% 80%" })
 hl.window_rule({
-    match = { class = "^floating$" },
+    match = { class = "^Sxiv$" },
     float = true,
     center = true,
-    size = "70% 80%",
+    size = { "monitor_w * 0.7", "monitor_h * 0.8" },
+})
+hl.window_rule({
+    match     = { class = "^floating$" },
+    float     = true,
+    center    = true,
+    size      = { "monitor_w * 0.85", "monitor_h * 0.85" },
     workspace = "special",
 })
 
