@@ -15,8 +15,6 @@ alias t='tmux'
 alias c='antigravity'
 alias vi='nvim'
 alias s='scrcpy --no-audio'
-alias gpt='firefox https://chat.openai.com & disown'
-alias bing='firefox --private-window https://www.bing.com/chat && disown'
 
 alias y='yazi'
 alias top='btop'
@@ -141,7 +139,7 @@ function v() {
 }
 
 function yt-dlpp() {
-    for profile in "$HOME/.zen"/*; do
+    for profile in "$XDG_CONFIG_HOME/zen"/*; do
         echo "Trying: $profile"
         yt-dlp --cookies-from-browser "firefox:$profile" $1 && break
     done

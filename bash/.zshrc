@@ -117,3 +117,6 @@ export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PR
 
 export CC=clang
 export CXX=clang++
+
+# opencode
+export PATH=/home/cosnate/.opencode/bin:$PATH

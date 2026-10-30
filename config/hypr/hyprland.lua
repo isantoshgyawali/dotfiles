@@ -2,8 +2,8 @@
 ------------
 -- Monitors |
 ------------
-hl.monitor({ output = "eDP-1", mode = "preferred", position = "auto", scale = 1.25 })
-hl.monitor({ output = "HDMI-A-1", mode = "1920x1080@100", position = "0x0", scale = 1, mirror = "eDP-1" })
+hl.monitor({ output = "eDP-1", mode = "preferred", position = "auto", scale = 1.33 })
+hl.monitor({ output = "HDMI-A-1", mode = "1920x1080@60", position = "0x0", scale = 1, mirror = "eDP-1"  })
 hl.monitor({ output = "DP-2", mode = "1920x1080@100", position = "0x0", scale = 1, mirror = "eDP-1" })
 
 --------------------
@@ -13,6 +13,7 @@ terminal    = "kitty"
 sysMonitor  = "btop"
 fileManager = "nautilus"
 menu        = "rofi -show drun -auto-select"
+-- menu        = "marea search"
 scripts     = os.getenv("HOME") .. "/.config/hypr/scripts/"
 
 function run(cmd)
@@ -44,7 +45,7 @@ hl.on("hyprland.start", function()
     run("systemctl --user start hyprpolkitagent")
     run("hyprpm reload -n")
     run("[workspace special silent;noanim] kitty --class floating --title controlCenter")
-    run("[workspace 9 silent;noanim] kitty --title sysmon -e btop")
+    run("[workspace 9 silent;noanim] kitty --class sysmon --title sysmon -e btop")
 end)
 
 -----------------------------

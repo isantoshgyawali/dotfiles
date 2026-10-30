@@ -87,7 +87,8 @@ bind("SUPER + SPACE", hl.dsp.exec_cmd(menu))
 bind("SUPER + Return", hl.dsp.exec_cmd(terminal))
 bind("SUPER + E", hl.dsp.exec_cmd(fileManager))
 bind("SUPER + R", script("books.sh"))
-bind("SUPER + M", hl.dsp.exec_cmd('kitty --title "sysmon" -e ' .. sysMonitor))
+bind("SUPER + M", hl.dsp.exec_cmd(terminal .. ' --class sysmon --title sysmon -e ' .. sysMonitor))
+bind("SUPER + Y", hl.dsp.exec_cmd(terminal .. ' -e yt-x'))
 
 -- hyprland-scroll-overview-keymaps
 bind("ALT + tab", hl.plugin.scrolloverview.overview("toggle all"))
@@ -96,14 +97,13 @@ hl.define_submap("scrolloverview", function()
     hl.bind("l", hl.plugin.scrolloverview.navigate("right"))
     hl.bind("k", hl.plugin.scrolloverview.navigate("up"))
     hl.bind("j", hl.plugin.scrolloverview.navigate("down"))
-    hl.bind("return", hl.plugin.scrolloverview.overview("select"))
     hl.bind("escape", hl.plugin.scrolloverview.overview("off"))
     hl.bind("q", hl.plugin.scrolloverview.overview("off"))
 end)
 
 ---- clipse: clipboard manager
 bind("SUPER + V", function()
-    hl.exec_cmd(terminal .. " -e bash -c 'clipse -listen && clipse $PPID'",
+    hl.exec_cmd(terminal .. " --class clipse -e bash -c 'clipse -listen && clipse $PPID'",
         { float = true, size = "900 600", center = true })
 end)
 
@@ -122,8 +122,8 @@ bind("XF86AudioLowerVolume", script("Volume.sh", "--dec"), { locked = true })
 bind("XF86AudioMute", script("Volume.sh", "--toggle"), { locked = true })
 
 ---- brightness controls [fn key]
-bind("XF86MonBrightnessUp", script("Brightness.sh", "--inc"), { locked = true })       -- +5
-bind("XF86MonBrightnessDown", script("Brightness.sh", "--dec"), { locked = true })     -- -5
+bind("XF86MonBrightnessUp", script("Brightness.sh", "--inc"), { locked = true })   -- +5
+bind("XF86MonBrightnessDown", script("Brightness.sh", "--dec"), { locked = true }) -- -5
 
 -- set to 1: main screen and external monitor
 bind("SUPER + down", function()
