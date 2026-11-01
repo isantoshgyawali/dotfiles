@@ -12,10 +12,10 @@ hl.env("QT_QPA_PLATFORMTHEME", "qt5ct")
 hl.env("QT_QPA_PLATFORM", "wayland;xcb")
 
 -- Cursor
-hl.env("XCURSOR_SIZE", 48)
+hl.env("XCURSOR_SIZE", 36)
 hl.env("XCURSOR_THEME", "Banana")
 hl.env("HYPRCURSOR_THEME", "Banana-green")
-hl.env("HYPRCURSOR_SIZE", 48)
+hl.env("HYPRCURSOR_SIZE", 36)
 
 -- Firefox
 hl.env("MOZ_ENABLE_WAYLAND", 1)
